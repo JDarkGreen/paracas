@@ -67,5 +67,28 @@
 	</div> <!-- /.container -->	
 </section> <!-- /.pageInicio__benefits -->
 
+<!-- Sección Bienvenida -->
+<section class="pageInicio__welcome">
+	<div class="container">
+		<!-- Titulo de Sección --> <h2 class="titleSectionCommon text-uppercase text-xs-center">
+		<span><?php _e('bienvenidos' , LANG ); ?></span></h2>
+
+		<!-- Contenedor o Información -->
+		<section class="pageInicio__welcome__content">
+			<div class="row">
+				<div class="col-xs-12">
+					
+				</div> <!-- /.col-xs-4 -->
+				<div class="col-xs-12">
+					<!-- Títulos --> <h3 class="pageInicio__welcome__title"> <?php _e('paracas sunset hotel' , LANG ); ?> <span></span> </h3>
+
+					<!--  -->
+				</div> <!-- /.col-xs-8 -->
+			</div> <!-- /.row -->
+		</section> <!-- /.pageInicio__welcome__content -->
+
+	</div> <!-- /.container -->	
+</section> <!-- /.pageInicio__welcome -->
+
 <!-- Footer -->
 <?php get_footer(); ?>
