@@ -1,0 +1,280 @@
+@import "compass/css3"
+
+//Importar Fuentes
+
+//Bebas Neue
+@font-face
+	font-family: 'Bebas' 
+	src: url('../../fonts/bebasneue/bebasneue.eot')
+	src: url('../../fonts/bebasneue/bebasneue.eot?#iefix') format('embedded-opentype'), url('../../fonts/bebasneue/bebasneue.woff2') format('woff2'), url('../../fonts/bebasneue/bebasneue.woff') format('woff'), url('../../fonts/bebasneue/bebasneue.ttf')  format('truetype'), url('../../fonts/bebasneue/blogger_sans.svg#svgFontName') format('svg')
+
+//Roboto
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700,300italic,300)
+
+/***************************************************************************************/
+/**-------------------------- VARIABLES ---------------------------------------------**/
+/***************************************************************************************/
+
+//Color 
+
+$theme_red        : #A0000D
+
+$theme_gray_title : #5B585A
+
+$theme_alpha_green: rgba(0, 206, 189,.7)
+$theme_turquesa   : #00C1AD
+
+$theme_crema      : #F8EDE0
+
+
+/***************************************************************************************/
+/**-------------------------- RESET --------------------------------------------------**/
+/***************************************************************************************/
+
+body,html
+	font-size: 16px
+	width    : 100% 
+
+
+figure 
+	margin: 0
+
+/***************************************************************************************/
+/**-------------------------- KEYFRAMES  ---------------------------------------------**/
+/***************************************************************************************/
+
+//PULSE
++keyframes( pulse )
+	0%, 100%
+		+translateX( -5px )
+	50%
+		+translateX( 0 )
+
+//EXPAND
++keyframes( expand )
+	0%, 100%
+		+scale( 1.3 )
+	50%
+		+scale( 1.0 )
+
+//EXPAND BACKGROUND
+
+
+//CONTRACT
++keyframes( contract )
+	0%
+		+scale( 0 )
+	100%
+		+scale( 1 )
+
+//LEFT TO RIGHT
++keyframes( left-to-right )
+	0%
+		+transform( translateZ( 300px ) translateX( -10% ) )	
+	100% 
+		+transform( translateZ( 300px ) translateX( 0% ) )
+
+
+/***************************************************************************************/
+/**-------------------------- ANIMACIONES CON CLASES ----------------------------------**/
+/***************************************************************************************/
+
+.box-expand
+	animation: expand 20s ease 
+.box-left-to-right
+	animation: left-to-right 10s ease
+
+
+/***************************************************************************************/
+/**-- SECCIONES - PAGINAS EN COMUN  --------------------------------------------------**/
+/***************************************************************************************/
+/*POSICIONES */
+.relative
+	position: relative
+
+//Contenedor con display flex
+.container-flex
+	display        : flex
+	flex-wrap      : wrap 
+	justify-content: center
+
+//Alinear contenidos
+.align-content
+	align-content: center
+	align-items  : center 
+
+//Flechas de Slider en común
+.arrow__common-slider
+	font-size      : 34px
+	margin         : -22px auto 0
+	position       : absolute
+	text-decoration: none
+	top            : 50%
+	z-index        : 999
+//Variaciones
+.arrow__common-slider--prev
+	left: -40px
+.arrow__common-slider--next
+	right: -40px
+
+//+Redes Sociales - ul
+
+//+Banners
+//++Banner Común 
+.sectionCommon__banner
+
+.sectionCommon__banner__content
+
+//+BOTONES
+//++ Botón Ver Más
+.btnCommon__show-more
+	color          : white 
+	display        : block 
+	font-size      : 14px 
+	margin         : 0 auto 
+	max-width      : 94px
+	padding        : 12px 
+	text-decoration: none 
+	+border-radius( 5px )
+//+++ Variacion a turquesa
+.btnCommon__show-more--turquesa
+	background: $theme_turquesa	
+
+
+//+TITULOS
+//++ Titulo de Seccion de Pagina
+.titleSectionCommon
+	margin: 0 auto 30px
+	span 
+		+box-shadow( 1px 1px 10px )
+		background : url("../../images/bg_title.jpg") repeat
+		color      : $theme_gray_title
+		display    : inline-block
+		font-family: "Bebas"
+		font-size  : 40px 
+		padding    : 18px 28px
+
+
+//BOTÓN HACIA ARRIBA 
+#arrow-up-page
+
+/***************************************************************************************/
+/**--  HEADER   ----------------------------------------------------------------------**/
+/***************************************************************************************/
+
+//Header Principal
+.mainHeader
+	background   : white 
+	border-bottom: 1px solid black 
+	left         : 0 
+	max-height   : 100px 
+	padding      : 10px 5px
+	position     : fixed
+	right        : 0 
+	top          : 0 
+	z-index      : 999
+	//Iconos
+	.icon-header 
+		color    : $theme_red
+		font-size: 40px
+	//Logo Principal
+	.logo 
+		margin   : 0 15px 
+		max-width: 182px 
+
+
+/***************************************************************************************/
+/**--  SLIDEBAR CONTENEDOR -----------------------------------------------------------**/
+/***************************************************************************************/
+
+#sb-site
+	padding: 100px 0 0 0
+
+/***************************************************************************************/
+/**--  WRAPPER GENERAL ---------------------------------------------------------------**/
+/***************************************************************************************/
+
+/***************************************************************************************/
+/**--  PAGINA INICIO  ----------------------------------------------------------------**/
+/***************************************************************************************/
+
+//Slider De Página
+.pageInicio__slider
+	//Wrapper
+	.carousel-inner
+		//Carousel Item
+		.carousel-item
+			//animation            : expand-bg 10s ease infinite
+			//background-attachment: fixed
+			//background-position  : top center 
+			background-repeat    : no-repeat
+			background-size      : cover 
+			height               : 350px
+			//Información Caption Ti´tulo y parrafp
+			.carousel-caption
+				h3 , p 
+					background: $theme_alpha_green
+	//Indicadores
+	.carousel-indicators 
+		left : inherit
+		right: 0
+		top  : 10px
+		li
+			height: 20px 
+			width : 20px
+	
+//++ SECCIÓN HABITACIONES
+.pageInicio__rooms
+	background: $theme_crema
+	padding   : 0 0 26px 
+	//Articulos
+	.item-room
+		font-family: "Roboto" , sans-serif
+		//Imagen
+		figure 
+			border  : 4px solid white
+			margin  : 0 auto 30px 
+			overflow: hidden
+		//Titulo
+		h3 
+			color : $theme_gray_title
+			margin: 0 auto 22px 
+
+//++ SECCIÓN BENEFICIOS
+.pageInicio__benefits
+	padding: 30px 0
+
+/***************************************************************************************/
+/**--  PÁGINA NOSOTROS  --------------------------------------------------------------**/
+/***************************************************************************************/
+
+/***************************************************************************************/
+/**--  PÁGINA SERVICIOS --------------------------------------------------------------**/
+/***************************************************************************************/
+
+
+/***************************************************************************************/
+/**--  PÁGINA MEDIA  -----------------------------------------------------------------**/
+/***************************************************************************************/
+
+/***************************************************************************************/
+/**--  PÁGINA BLOG -------------------------------------------------------------------**/
+/***************************************************************************************/
+
+/************************************************************************************/
+/**--  PÁGINA PREGUNTAS -----------------------------------------------------------**/
+/************************************************************************************/
+
+/***************************************************************************************/
+/**--  PÁGINA CONTACTO ---------------------------------------------------------------**/
+/***************************************************************************************/
+
+
+/***************************************************************************************/
+/**--  MAIN FOOTER  ------------------------------------------------------------------**/
+/***************************************************************************************/
+
+/************************************************************************************/
+/*-- MEDIA QUERIES -----------------------------------------------------------------*/
+/************************************************************************************/
+
