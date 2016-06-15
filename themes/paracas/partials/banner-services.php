@@ -6,12 +6,10 @@
 <section class="sectionCommon__banner__services text-xs-center">
 	<div class="container">
 		<div class="container-flex align-content">
-			<!-- figure --> <figure class="hidden-xs-down"><img src="<?= IMAGES ?>/icon/mariposa.png" alt="" class="img-fluid" /></figure>
 			<!-- Titulo -->
-			<h2 class=""><?php _e('Consulta más sobre nuestros servicios' , LANG ); ?></h2>
+			<h2 class=""><?php _e('Disfruta en Paracas Sunset Hotel las maravillas de Paracas - Ica' , LANG ); ?></h2>
 			<!-- Botón -->
-			<a href="<?= get_permalink( $page_servicios->ID ); ?>" class="btnCommon__show-more btnCommon__show-more--small"><?php _e('click aquí' , LANG ); ?></a>
-			<!-- figure --> <figure  class="hidden-xs-down"><img src="<?= IMAGES ?>/icon/mariposa.png" alt="" class="img-fluid" /></figure>
+			<a href="<?= get_permalink( $page_servicios->ID ); ?>" class="btnCommon__show-more btnCommon__show-more--rojo text-uppercase"><?php _e('reservar' , LANG ); ?></a>
 		</div> <!-- /.container-flex align-content -->
 	</div> <!-- /.container -->
 </section> <!-- /.sectionCommon__banner__services -->

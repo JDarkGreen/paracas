@@ -39,10 +39,10 @@
 <header class="mainHeader sb-slide">
 
 	<!-- Contenedor Version Mobile -->
-	<div class="mainHeader__container container-flex align-content">
+	<div class="mainHeader__container container-flex align-content hidden-sm-up">
 
 		<!-- Icono Izquierda -->
-		<div class="icon-header"> 
+		<div id="toggle-left-nav" class="icon-header"> 
 			<i class="fa fa-bars" aria-hidden="true"></i> 
 		</div> <!-- /.icon-header -->	
 
@@ -58,15 +58,86 @@
 		</h1> <!-- /.lgoo -->
 
 		<!-- Icono Izquierda -->
-		<div class="icon-header"> 
+		<div id="toggle-right-nav" class="icon-header"> 
 			<i class="fa fa-bars" aria-hidden="true"></i> 
 		</div> <!-- /.icon-header -->
 	
 	</div> <!-- /. -->
+
+	<!-- Contenedor Version Desktop -->
+	<div class="mainHeader__container hidden-xs-down">
+
+		<!-- Barra de Información -->
+		<section class="mainHeader__info">
+
+			<div class="mainHeader__info__content container-flex align-content">
+				<!-- Titulo -->
+				<h2 class="text-uppercase"><?php _e('reservas: ', LANG ); ?></h2>
+				<!-- Teléfonos -->
+				<?php 
+					if( isset($options['contact_tel']) && !empty($options['contact_tel']) ) :
+					$numeros = $options['contact_tel']; 
+					$numeros = explode(",", $numeros );
+					/* Obtener el primero numero */
+					echo "<p>" . $numeros[0] . "</p>";
+					endif;  
+				?>
+				<!-- Email -->
+				<?php if( isset($options['contact_email']) && !empty($options['contact_email']) ) :
+				?>
+				<h3><?= $options['contact_email']; ?></h3>
+				<?php endif; ?>			
+			</div> <!-- /.mainHeader__info__content -->	
+
+			<!-- Lista de Redes Sociales -->
+			<ul class="social-links social-links--gray">
+				<!-- Facebook -->
+				<?php if( isset($options['red_social_fb']) && !empty($options['red_social_fb']) ) : ?>
+					<li><a href="<?= $options['red_social_fb']; ?>">
+						<i class="fa fa-facebook" aria-hidden="true"></i>
+					</a></li>
+				<?php endif; ?>
+				<!-- Twitter -->
+				<?php if( isset($options['red_social_twitter']) && !empty($options['red_social_twitter']) ): ?>
+					<li><a href="<?= $options['red_social_twitter']; ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
+				<?php endif; ?>
+				<!-- Youtube -->
+				<?php if( isset($options['red_social_ytube']) && !empty($options['red_social_ytube']) ) : ?>
+					<li><a href="<?= $options['red_social_ytube']; ?>"><i class="fa fa-youtube" aria-hidden="true"></i></a> </li>
+				<?php endif; ?>
+			</ul> <!-- /.social-links -->			
+
+		</section>
+		
+		<!--Menú de Navegación Principal -->
+		<nav class="mainNavigation text-md-right">
+			<?php wp_nav_menu(
+				array(
+					'menu_class'     => 'main-menu text-center',
+					'theme_location' => 'main-menu'
+				));
+			?>			
+		</nav> <!-- /.mainNavigation -->
 	
+	</div> <!-- /.mainHeader__container hidden-xs-down -->
 
 </header> <!-- /.mainHeader sb-slide -->
 
+<!-- Contenedor Izquierda Version Mobile -->
+<aside class="sb-slidebar sb-left sb-style-push">
+	<!-- Navegación Principal -->
+	<nav class="mainNavigation">
+		<?php wp_nav_menu(
+			array(
+				'menu_class'     => 'main-menu text-center',
+				'theme_location' => 'main-menu'
+			));
+		?>						
+	</nav> <!-- /.mainNav -->  
+</aside> <!-- /.sb-slidebar sb-left sb-style-push -->
+
+<!-- Flecha Indicador hacia arriba -->
+<a href="#" id="arrow-up-page"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
 
 <!-- Contenedor version mobile libreria sliderbar js -->
 <div id="sb-site" class="">

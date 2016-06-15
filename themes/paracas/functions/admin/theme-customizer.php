@@ -220,24 +220,12 @@ function theme_customize_register($wp_customize) {
 	));
 	
 	$wp_customize->add_control('theme_custom_settings[contact_tel]', array(
-		'label'    => __('Escribe el numero de teléfono', LANG),
+		'label'    => __('Escribe el o los números de teléfono [ NOTA: SEPARADOS POR COMAS ]', LANG),
 		'section'  => 'theme_contact_tel',
 		'settings' => 'theme_custom_settings[contact_tel]',
 		'type'     => 'text'
 	));	
 
-	//Telefono 2 Centrolima secundario
-	$wp_customize->add_setting('theme_custom_settings[contact_tel_2]', array(
-		'default' => '',
-		'type' => 'option'
-	));
-	
-	$wp_customize->add_control('theme_custom_settings[contact_tel_2]', array(
-		'label'    => __('Escribe otro numero de teléfono', LANG),
-		'section'  => 'theme_contact_tel',
-		'settings' => 'theme_custom_settings[contact_tel_2]',
-		'type'     => 'text'
-	));
 
 	//Customizar Direccion
 	$wp_customize->add_section('theme_contact_address', array(
@@ -343,63 +331,26 @@ function theme_customize_register($wp_customize) {
 		'type'     => 'textarea'
 	));	
 
-	//Customizar Cuentas Bancarias
-	$wp_customize->add_section('theme_bank', array(
-		'title' => __('Cuentas Bancarias', LANG),
-		'description' => __('Sección de Cuentas Bancarias', LANG),
+	//Customizar Horario de Atención
+	$wp_customize->add_section('theme_attention', array(
+		'title' => __('Horarios de Atención', LANG),
+		'description' => __('Sección de Horarios de Atención', LANG),
 		'priority' => 42
 	));
 	
 	//Interbank
-	$wp_customize->add_setting('theme_custom_settings[theme_bank_interbank_dolars]', array(
+	$wp_customize->add_setting('theme_custom_settings[theme_attention]', array(
 		'default' => '',
 		'type' => 'option'
 	));
 	
-	$wp_customize->add_control('theme_custom_settings[theme_bank_interbank_dolars]', array(
-		'label'    => __('Interbank Cuenta en dólares:', LANG),
-		'section'  => 'theme_bank',
-		'settings' => 'theme_custom_settings[theme_bank_interbank_dolars]',
-		'type'     => 'text'
+	$wp_customize->add_control('theme_custom_settings[theme_attention]', array(
+		'label'    => __('Escribe el o los horarios de atención al cliente:', LANG),
+		'section'  => 'theme_attention',
+		'settings' => 'theme_custom_settings[theme_attention]',
+		'type'     => 'textarea'
 	));	
 
-	$wp_customize->add_setting('theme_custom_settings[theme_bank_interbank_soles]', array(
-		'default' => '',
-		'type' => 'option'
-	));
-	
-	$wp_customize->add_control('theme_custom_settings[theme_bank_interbank_soles]', array(
-		'label'    => __('Interbank Cuenta en soles:', LANG),
-		'section'  => 'theme_bank',
-		'settings' => 'theme_custom_settings[theme_bank_interbank_soles]',
-		'type'     => 'text'
-	));
 
-	//BCP
-	$wp_customize->add_setting('theme_custom_settings[theme_bank_bcp]', array(
-		'default' => '',
-		'type' => 'option'
-	));
-	
-	$wp_customize->add_control('theme_custom_settings[theme_bank_bcp]', array(
-		'label'    => __('BCP Cuenta en soles:', LANG),
-		'section'  => 'theme_bank',
-		'settings' => 'theme_custom_settings[theme_bank_bcp]',
-		'type'     => 'text'
-	));	
-
-	//BBVA
-	$wp_customize->add_setting('theme_custom_settings[theme_bank_bbva]', array(
-		'default' => '',
-		'type' => 'option'
-	));
-	
-	$wp_customize->add_control('theme_custom_settings[theme_bank_bbva]', array(
-		'label'    => __('BBVA Cuenta en soles:', LANG),
-		'section'  => 'theme_bank',
-		'settings' => 'theme_custom_settings[theme_bank_bbva]',
-		'type'     => 'text'
-	));
-	
 }	
 ?>

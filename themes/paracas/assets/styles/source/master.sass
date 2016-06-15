@@ -19,7 +19,8 @@
 
 $theme_red        : #A0000D
 
-$theme_gray_title : #5B585A
+$theme_gray_title: #5B585A
+$theme_gray      : #7A7A7A
 
 $theme_alpha_green: rgba(0, 206, 189,.7)
 $theme_turquesa   : #00C1AD
@@ -121,9 +122,12 @@ figure
 
 //+Banners
 //++Banner Común 
-.sectionCommon__banner
 
-.sectionCommon__banner__content
+//++Banner de Servicios
+.sectionCommon__banner__services
+	background: $theme_turquesa
+	color     : white 	
+	padding   : 32px 0 
 
 //+BOTONES
 //++ Botón Ver Más
@@ -133,13 +137,19 @@ figure
 	font-size      : 14px 
 	margin         : 0 auto 
 	max-width      : 94px
-	padding        : 12px 
-	text-decoration: none 
+	padding        : 8px 12px 
 	+border-radius( 5px )
+	//hover y focus
+	&:hover , &:focus
+		color          : white 
+		text-decoration: none 
+
 //+++ Variacion a turquesa
 .btnCommon__show-more--turquesa
 	background: $theme_turquesa	
-
+//+++ Variacion a rojo
+.btnCommon__show-more--rojo
+	background: $theme_red
 
 //+TITULOS
 //++ Titulo de Seccion de Pagina
@@ -154,9 +164,51 @@ figure
 		font-size  : 40px 
 		padding    : 18px 28px
 
+//IMAGEN NOT BLUR ( NO DIFUMINADA )
+.imgNotBlur
+	+transform( scale(1.0) translateZ(0) )
+	-webkit-backface-visibility: hidden
+	backface-visibility        : hidden
+
+//REDES SOCIALES
+//+Redes Sociales - ul
+.social-links
+	display        : inline-block
+	list-style-type: none 
+	margin         : 0 auto
+	padding        : 0 
+	li 
+		display: inline-block
+		padding: 0 8px
+		a 
+			color    : white 
+			display  : block
+			font-size: 20px
+			//Hover
+			&:hover 
+				animation: expand 800ms ease infinite 
+
+//++Variacion de redes sociales a blanco
+.social-links--gray
+	li 
+		a 
+			color: $theme_gray 
 
 //BOTÓN HACIA ARRIBA 
 #arrow-up-page
+	+transition( all 500ms ease )
+	background: $theme_turquesa
+	color     : white 
+	display   : none 
+	font-size : 18px
+	padding   : 6px 13px
+	position  : fixed
+	right     : 3%
+	top       : 86%
+	z-index   : 999999
+	/* Hover */
+	&:hover 
+		background: $theme_red 
 
 /***************************************************************************************/
 /**--  HEADER   ----------------------------------------------------------------------**/
@@ -181,6 +233,30 @@ figure
 	.logo 
 		margin   : 0 15px 
 		max-width: 182px 
+
+
+//NAVEGACIÓN PRINCIPAL
+.mainNavigation
+	padding: 20px 0
+	ul.main-menu
+		margin : 0
+		padding: 0 
+		li 
+			+box-shadow( inset 0 0 0 0 transparent ) 
+			+transition( all 500ms cubic-bezier(.5,.5,.5,1.5) )
+			margin : 0 0 2px
+			padding: 6px 20px
+			//hover u active 
+			&:hover , &.current-menu-item , &.current_page_item
+				+box-shadow( inset 500px 0 0 0 $theme_red , 0 0 6px 3px red )
+
+			a 
+				color          : white 
+				display        : block 
+				font-family    : "Bebas"
+				font-size      : 24px 
+				text-decoration: none 
+				text-transform : uppercase
 
 
 /***************************************************************************************/
@@ -213,7 +289,14 @@ figure
 			//Información Caption Ti´tulo y parrafp
 			.carousel-caption
 				h3 , p 
-					background: $theme_alpha_green
+					background : $theme_alpha_green
+					line-height: 1em 
+				h3 
+					font-weight: 600
+				p 
+					font-family: "Bebas"
+					font-size  : 30px 
+
 	//Indicadores
 	.carousel-indicators 
 		left : inherit
@@ -223,10 +306,15 @@ figure
 			height: 20px 
 			width : 20px
 	
+//Imagen de slider 
+.pageInicio__slider__image
+	bottom  : 0 
+	position: absolute 
+
 //++ SECCIÓN HABITACIONES
 .pageInicio__rooms
 	background: $theme_crema
-	padding   : 0 0 26px 
+	padding   : 15px 0 26px 
 	//Articulos
 	.item-room
 		font-family: "Roboto" , sans-serif
@@ -249,6 +337,97 @@ figure
 	background     : url("../../images/img_background/welcome-paracas.jpg") no-repeat
 	background-size: cover 
 	padding        : 21px 0
+//++Contenedor de Seccion Texto Bienvenidos
+.pageInicio__welcome__content
+	background: $theme_crema
+	padding   : 30px 
+	//Parrafos
+	p 
+		color    : $theme_gray_title
+		font-size: 15px 
+//++Titulo Bienvenidos
+.pageInicio__welcome__title
+	color      : $theme_red
+	font-family: "Bebas"
+	font-size: 30px 
+	
+//++ SECCIÓN TOUR
+.pageInicio__tour
+	padding: 42px 0
+	
+	//Artículo
+	.item-tour
+		//Imagen
+		figure 
+			overflow: hidden
+			+border-radius( 6px )
+			img 
+				+transition( all 500ms cubic-bezier(.5,.5,.5,1.5) )
+			//Hover
+			&:hover 
+				img 
+					+scale( 1.2 )
+
+
+	//Conteneido de Articulo
+	.item-tour__content
+		bottom     : 26px 
+		color      : white 
+		font-family: "Raleway" , sans-serif
+		left       : 0
+		position   : absolute 
+		right      : 0 
+		//Titulo
+		h3
+			font-weight: 600
+		//Extracto o Destino
+
+//++ SECCIÓN GALERÍAS
+.pageInicio__gallery
+	background     : url("../../images/img_background/fondo-galeria-inicio-sunset-paracas.jpg") no-repeat
+	background-size: cover 
+	padding        : 44px 0
+
+	//Articulos
+	.item-gallery 
+		//Imagen
+		figure
+			+box-shadow( 1px 1px 11px black )
+			border  : 4px solid white 
+			margin  : 0 auto 20px 
+			overflow: hidden
+			img
+				+transition( all 500ms ease-in-out )
+			//Hover 
+			&:hover
+				img 
+					+scale( 1.2 )
+
+//++ SECCIÓN MISCELANEO
+.pageInicio__miscelaneo
+	background: $theme_crema
+	padding   : 53px 0
+
+	//Item Blog De Entradas 
+	.item-blog
+		margin: 0 auto 20px
+		//Imagen
+		figure 
+			margin  : 0 auto 20px 
+			overflow: hidden
+			img 
+				+transition( all 500ms cubic-bezier(.5,.5,.5,1.5) )
+			//Hover
+			&:hover 
+				img 
+					+scale( 1.2 )
+		//Texto
+		h3, p 
+			font-family: "Raleway" , sans-serif
+			font-size  : 16px
+		h3 
+			color      : $theme_red
+			font-weight: 600 
 
 /***************************************************************************************/
 /**--  PÁGINA NOSOTROS  --------------------------------------------------------------**/
@@ -280,7 +459,118 @@ figure
 /**--  MAIN FOOTER  ------------------------------------------------------------------**/
 /***************************************************************************************/
 
+//SECCIÓN
+.mainFooter
+	background           : $theme_crema url("../../images/img_background/fondo_footer_paracas_sunset_lima_peru.png") no-repeat
+	background-attachment: fixed
+	background-size      : cover
+	padding              : 80px 0 50px
+
+//Artículos de Blog
+.mainFooter__item
+	color : white 
+	margin: 0 auto 30px 
+
+//Subtítulo de Sección
+.mainFooter__subtitle
+	color    : white 
+	font-size: 16px 
+	margin   : 0 auto 14px 
+
+//Lista de Datos de Contacto
+.mainFooter__list-data
+	list-style-type: none
+	margin         : 0 
+	word-break     : break-all
+	li 
+		margin: 0 auto 10px
+		i 
+			display       : inline-block
+			font-size     : 20px
+			height        : 20px 
+			margin        : 0 7px 0 -30px
+			text-align    : center
+			vertical-align: top
+			width         : 20px 
+		p 
+			display: inline-block
+			margin : 0 auto 
+
 /************************************************************************************/
 /*-- MEDIA QUERIES -----------------------------------------------------------------*/
 /************************************************************************************/
 
+
+@media ( min-width: 1024px )
+
+	//CONTENEDOR MOBILE 
+	#sb-site
+		padding: 0 
+
+	//MAIN HEADER
+	.mainHeader
+		border-bottom: 0 
+		margin       : 0 36px 
+		max-height   : 100%
+		padding      : 0
+	//++Barra de Información
+	.mainHeader__info
+		background : url("../../images/img_background/textura_arena_paracas_sunset_lima_peru.jpg") repeat 
+		font-family: "Raleway" , sans-serif
+		//Títulos
+		h2 , h3 , p 
+			color      : $theme_gray_title
+			font-size  : 20px 
+			font-weight: 600 
+			margin     : 0 3px
+
+	//MAIN NAVIGATION
+	.mainNavigation 
+		background: $theme_turquesa
+		padding   : 0 40px
+		ul.main-menu 
+			li 
+				display: inline-block
+				margin : 0 
+				padding: 9px 10px 
+				//hover u active
+				&:hover , &.current-menu-item , &.current_page_item
+					+box-shadow( inset 500px 0 0 0 $theme_gray_title , 0 0 0 0 transparent )
+				a
+					font-family: "Raleway" , sans-serif
+					font-size  : 16px 
+
+	//PAGINA INICIO 
+	//++ Carousel Inicio
+	.pageInicio__slider 
+		.carousel-inner 
+			.carousel-item
+				height: auto
+				//Caption o Información
+				.carousel-caption
+					bottom : 20%
+					left   : initial 
+					padding: 0
+					right  : 5%
+					h3 , p 
+						display: inline-block
+						padding: 8px 23px
+
+	//MAIN FOOTER
+	.mainFooter
+		background-position: 0 110%
+		background-size    : 100%
+		padding            : 8% 0 0 
+
+	//Item Footer
+	.mainFooter__item
+		p 
+			font-size: 14px
+
+	//Lista de Datos de Contacto
+	.mainFooter__list-data
+		font-size: 14px 
+		li 
+			margin: 0 auto 10px
+			i 
+				margin: 0 7px 0 -30px

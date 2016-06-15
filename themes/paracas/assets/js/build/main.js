@@ -105,6 +105,11 @@ var j = jQuery.noConflict();
 					fluidSpeed     : 2000,
 					smartSpeed     : 2000,
 					dots           : Boolean( Dot ),
+					responsive:{
+				      	640:{
+				            items: Itemsresponsive
+				        },
+			    	}	
 				});
 			
 			/* end each */
@@ -123,12 +128,6 @@ var j = jQuery.noConflict();
 			var slider = j(this).attr('data-slider');	
 			j("#"+slider).trigger('next.owl.carousel' , [900] );
 		});
-
-
-
-
-
-
 
 		/*|----------------------------------------------------------------------|*/
 		/*|-----  ISOTOPE DE IMAGENES  -----|*/

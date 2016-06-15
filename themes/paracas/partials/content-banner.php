@@ -18,53 +18,65 @@
 
 ?>
 
-<!-- Contenedor de bannner   -->
-<section id="carousel-home" class="pageInicio__slider carousel slide" data-ride="carousel">
+<!-- Contenedor Con Posicion relativa -->
+<section class="relative">
+	
+	<!-- Contenedor de bannner   -->
+	<section id="carousel-home" class="pageInicio__slider carousel slide" data-ride="carousel">
 
-	<ol class="carousel-indicators">
-	<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
-  	<li data-target="#carousel-home" data-slide-to="<?= $j ?>" class="<?= $j == 0 ? 'active' : '' ?>"></li>
-	<?php $j++; endwhile; wp_reset_postdata(); ?>
-  </ol> <!-- /.carousel-indicators -->
-
-	<!-- Wrapper for Carousel -->
-	<div class="carousel-inner" role="listbox">
-
+		<ol class="carousel-indicators">
 		<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
-		
-		<!-- Obtener Imagen Destacada o en su defect oobtener un place image -->
-		<?php  
-			$feat_image = "";
-			if( has_post_thumbnail() ) : 
-				$feat_image = wp_get_attachment_url( get_post_thumbnail_id() );
-			else: 
-				$feat_image = "https://placeimg.com/1920/721/any";
-			endif;
-		?>
+	  	<li data-target="#carousel-home" data-slide-to="<?= $j ?>" class="<?= $j == 0 ? 'active' : '' ?>"></li>
+		<?php $j++; endwhile; wp_reset_postdata(); ?>
+	  </ol> <!-- /.carousel-indicators -->
 
-	    <div class="carousel-item <?= $i == 0 ? 'active' : '' ?>" style='background-image: url("<?= $feat_image; ?>")'>
+		<!-- Wrapper for Carousel -->
+		<div class="carousel-inner" role="listbox">
+
+			<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
 			
-			<!-- Imagen -->
-			<img src="<?= $feat_image; ?>" alt="eventos-gala-imagen-catering-<?= $i ?>" class="img-fluid hidden-xs-down">
+			<!-- Obtener Imagen Destacada o en su defect oobtener un place image -->
+			<?php  
+				$feat_image = "";
+				if( has_post_thumbnail() ) : 
+					$feat_image = wp_get_attachment_url( get_post_thumbnail_id() );
+				else: 
+					$feat_image = "https://placeimg.com/1920/721/any";
+				endif;
+			?>
 
-	    	<!-- Caption o Información -->
-				<div class="carousel-caption">
-    			<!-- Título -->
-    			<?php 
-    				//$title    = explode(" ", get_the_title() );
-    				//$title1   = array_slice( $title , 0 , 2 ) ;
-    				//$title2   = array_slice( $title , 2 ) ;
-    			?>
-    			<h3><?= get_the_title(); ?></h3>
-    			<p><?= get_the_content(); ?></p>
-  			</div>	<!-- /.carousel-caption -->    
+		    <div class="carousel-item <?= $i == 0 ? 'active' : '' ?>" style='background-image: url("<?= $feat_image; ?>")'>
+				
+				<!-- Imagen -->
+				<img src="<?= $feat_image; ?>" alt="eventos-gala-imagen-catering-<?= $i ?>" class="img-fluid hidden-xs-down">
 
-	    </div> <!-- /.arousel-item -->
-  	<?php $i++; endwhile; wp_reset_postdata(); ?>
+		    	<!-- Caption o Información -->
+					<div class="carousel-caption">
+	    			<!-- Título -->
+	    			<?php 
+	    				//$title    = explode(" ", get_the_title() );
+	    				//$title1   = array_slice( $title , 0 , 2 ) ;
+	    				//$title2   = array_slice( $title , 2 ) ;
+	    			?>
+	    			<h3><?= get_the_title(); ?></h3> 
+	    			<!-- Separación en Desktop --> <br class="hidden-xs-down" />
+	    			<p class="text-uppercase"><?= get_the_content(); ?></p>
+	  			</div>	<!-- /.carousel-caption -->    
 
-  </div> <!-- /.carousel-inner -->
+		    </div> <!-- /.arousel-item -->
+	  	<?php $i++; endwhile; wp_reset_postdata(); ?>
 
-</section> <!-- /.carousel-home -->
+	  </div> <!-- /.carousel-inner -->
+
+	</section> <!-- /.carousel-home -->
+
+	<!-- Imagen Posterior Lobo -->
+	<div class="pageInicio__slider__image">
+		<img src="<?= IMAGES ?>/img_background/vector_paracas_sunset_lima_peru.png" alt="paracas-sunset-reserva-lima-peru" class="img-fluid" />
+	</div> <!-- /.pageInicio__slider__image -->
+	
+</section>
+
 
 
 <?php endif; wp_reset_postdata(); ?>

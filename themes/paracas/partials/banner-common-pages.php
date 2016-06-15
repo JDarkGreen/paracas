@@ -12,7 +12,7 @@
 			}
 		?>
 		<figure style='background: url("<?= $img_banner; ?>")'>
-			<img src="<?= $img_banner ?>" alt="banner-nosotros-empresa-pbg" class="img-fluid hidden-xs-down" />
+			<img src="<?= $img_banner ?>" alt="banner-nosotros-empresa-pbg" class="img-fluid" />
 		</figure>
 
 		<!-- Título de la pagina posicion absoluta -->

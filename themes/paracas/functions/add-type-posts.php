@@ -172,6 +172,30 @@ function create_post_type(){
 		'menu_icon'   => 'dashicons-portfolio',
 	);
 
+	/*|>>>>>>>>>>>>>>>>>>>> TOURS  <<<<<<<<<<<<<<<<<<<<<<<<<<<<|*/
+	
+	$labels11 = array(
+		'name'               => __('Tours'),
+		'singular_name'      => __('Tour'),
+		'add_new'            => __('Nuevo Tour'),
+		'add_new_item'       => __('Agregar nuevo Tour'),
+		'edit_item'          => __('Editar Tour'),
+		'view_item'          => __('Ver Tour'),
+		'search_items'       => __('Buscar Tour'),
+		'not_found'          => __('Tour no encontrado'),
+		'not_found_in_trash' => __('Tour no encontrado en la papelera'),
+	);
+
+	$args11 = array(
+		'labels'      => $labels11,
+		'has_archive' => true,
+		'public'      => true,
+		'hierachical' => false,
+		'supports'    => array('title','editor','excerpt','custom-fields','thumbnail','page-attributes'),
+		'taxonomies'  => array('post-tag'),
+		'menu_icon'   => 'dashicons-portfolio',
+	);
+
 
 	/*|>>>>>>>>>>>>>>>>>>>> REGISTRAR  <<<<<<<<<<<<<<<<<<<<|*/
 	register_post_type( 'banner'   , $args  );
@@ -181,6 +205,7 @@ function create_post_type(){
 	register_post_type( 'galery-images' , $args8 );
 	register_post_type( 'galery-videos' , $args9 );
 	register_post_type( 'habitacion' , $args10 );
+	register_post_type( 'tour' , $args11 );
 
 	flush_rewrite_rules();
 }

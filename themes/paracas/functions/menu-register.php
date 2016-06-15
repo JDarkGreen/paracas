@@ -5,8 +5,7 @@
 function register_my_menus(){
 	register_nav_menus(
 		array(
-			'main-menu-left'  => __('Main Menu Left', LANG ),
-			'main-menu-right' => __('Main Menu Right', LANG ),
+			'main-menu' => __('Main Menu', LANG ),
 		)
 	);
 }
