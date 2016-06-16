@@ -5,7 +5,7 @@ var j = jQuery.noConflict();
 
 	j(document).on('ready',function(){
 
-		//CLICK BOTON SUBIR BANNER DESERVICIOS
+		//CLICK BOTON SUBIR BANNER DE SERVICIOS
 		j("#btn_add_banner").on('click',function(e){
 			e.preventDefault();
 
@@ -89,6 +89,41 @@ var j = jQuery.noConflict();
 	        	Uploader.open();
 	    	});
 	    }
+
+	    //SUBIR IMAGEN CON WIDGET 
+	    if( j(".upload-img-btn-widget").length ){ 
+	    	j(document).on( "click", ".upload-img-btn-widget", function ( e ){
+	    		//Prevenir accion por defecto
+	    		e.preventDefault();
+	    		//boton
+	    		var btn_add_img_tax = j(this);
+				
+				var Uploader;
+
+				if ( Uploader) { mediaUploader.open();  return; }
+
+				Uploader = wp.media.frames.file_frame = wp.media({
+					title: 'Escoge Image',
+					button: {
+						text: 'Escoge Image'
+					}, multiple: false 
+				}); 
+
+				Uploader.on('select', function() {
+					attachment = Uploader.state().get('selection').first().toJSON();
+
+					var campo_field = btn_add_img_tax.parent("p").find("input");
+					console.log(campo_field);
+	          		//setea el campo
+	          		campo_field.val(attachment.url);
+	          	});
+
+	        	// Open the uploader dialog
+	        	Uploader.open();
+	    	});
+	    }	    
+
+
 	/*---------------------------- LIMITE ------------------------------*/
 	});
 

@@ -29,6 +29,13 @@ include_once("functions/support-formats.php");
 /***********************************************************************************************/
 include_once("functions/menu-register.php");
 
+/***********************************************************************************************/
+/* Registrar Menu Idiomas nota: solo si esta instalado el plugin q translate de WP  */
+/***********************************************************************************************/
+
+if ( function_exists('qtrans_getLanguage') ){
+	include_once("functions/add-qtranslate.php");
+}
 
 /***********************************************************************************************/
 /* Agregando nuevos SIDEBARS y secciones para widgets */
@@ -55,6 +62,14 @@ include_once("functions/add-new-metabox.php");
 /* Customizar Sección de Comentarios  */
 /***********************************************************************************************/
 include_once("functions/custom-comments.php");
+
+/***********************************************************************************************/
+/* Registrar widgets  */
+/***********************************************************************************************/
+
+//Widget Muestra imagen o icono y texto
+include_once("functions/widgets/widget-ad-icon-text.php");
+
 
 /***********************************************************************************************/
 /* Localization Support */

@@ -65,11 +65,23 @@
 	</div> <!-- /. -->
 
 	<!-- Contenedor Version Desktop -->
-	<div class="mainHeader__container hidden-xs-down">
+	<div class="mainHeader__container hidden-xs-down relative">
 
 		<!-- Barra de Información -->
-		<section class="mainHeader__info">
+		<section class="mainHeader__info container-flex align-content relative">
 
+			<!-- Logo  Posicion Absoluta -->
+			<h1 class="logo">
+				<a href="<?= site_url() ?>">
+					<?php if( !empty($options['logo']) ) : ?>
+						<img src="<?= $options['logo'] ?>" alt="<?= "-logo-" . bloginfo('name') ?>" class="img-responsive center-block" />
+					<?php else: ?>
+						<img src="<?= IMAGES ?>/logo.png" alt="<?= "-logo-" . bloginfo('name') ?>" class="img-responsive center-block" />
+					<?php endif; ?>
+				</a>
+			</h1> <!-- /.logo -->
+			
+			<!-- Seccion  Solo de Informacion  -->
 			<div class="mainHeader__info__content container-flex align-content">
 				<!-- Titulo -->
 				<h2 class="text-uppercase"><?php _e('reservas: ', LANG ); ?></h2>
@@ -93,21 +105,28 @@
 			<ul class="social-links social-links--gray">
 				<!-- Facebook -->
 				<?php if( isset($options['red_social_fb']) && !empty($options['red_social_fb']) ) : ?>
-					<li><a href="<?= $options['red_social_fb']; ?>">
+					<li><a target="_blank" href="<?= $options['red_social_fb']; ?>">
 						<i class="fa fa-facebook" aria-hidden="true"></i>
 					</a></li>
 				<?php endif; ?>
 				<!-- Twitter -->
 				<?php if( isset($options['red_social_twitter']) && !empty($options['red_social_twitter']) ): ?>
-					<li><a href="<?= $options['red_social_twitter']; ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
+					<li><a target="_blank" href="<?= $options['red_social_twitter']; ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
 				<?php endif; ?>
 				<!-- Youtube -->
 				<?php if( isset($options['red_social_ytube']) && !empty($options['red_social_ytube']) ) : ?>
-					<li><a href="<?= $options['red_social_ytube']; ?>"><i class="fa fa-youtube" aria-hidden="true"></i></a> </li>
+					<li><a target="_blank" href="<?= $options['red_social_ytube']; ?>"><i class="fa fa-youtube" aria-hidden="true"></i></a> </li>
 				<?php endif; ?>
-			</ul> <!-- /.social-links -->			
+			</ul> <!-- /.social-links -->
 
-		</section>
+			<!-- Seccion de SIDEBAR DE MULTILENGUAJE  -->
+			<section class="">
+				<?php if ( is_active_sidebar( 'header-language' ) ) : ?>
+					<?php dynamic_sidebar( 'header-language' ); ?>
+				<?php endif; ?>
+			</section>
+
+		</section> <!-- /.mainHeader__info container-flex -->
 		
 		<!--Menú de Navegación Principal -->
 		<nav class="mainNavigation text-md-right">
@@ -118,6 +137,13 @@
 				));
 			?>			
 		</nav> <!-- /.mainNavigation -->
+
+		<!-- Widget de tiempo posición absoluta -->
+		<section class="mainHeader__widget-time">
+			<!-- www.TuTiempo.net - Ancho:452px - Alto:89px -->
+			<div id="TT_vhjyJCKCphCBdehAKAuk4kBkHWn1LAE2btEYksioq1z"><a href="http://www.tutiempo.net">Tu tiempo</a></div>
+			<script type="text/javascript" src="http://www.tutiempo.net/widget/eltiempo_vhjyJCKCphCBdehAKAuk4kBkHWn1LAE2btEYksioq1z"></script>		
+		</section> <!-- /.mainHeader__widget-time -->
 	
 	</div> <!-- /.mainHeader__container hidden-xs-down -->
 

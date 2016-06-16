@@ -64,6 +64,16 @@
 		<!-- Titulo de Sección --> <h2 class="titleSectionCommon text-uppercase text-xs-center">
 		<span><?php _e('beneficios del hotel' , LANG ); ?></span></h2>
 
+		<div class="clearfix"></div>
+
+		<!-- BENEFICIOS DE HOTEL -->
+		<section class="pageInicio__benefits__content">
+			<div class="row">
+				<?php if ( is_active_sidebar( 'sidebar-benefits-hotel' ) ) : ?>
+					<?php dynamic_sidebar( 'sidebar-benefits-hotel' ); ?>
+				<?php else: __("Actualizando contenido" , LANG ) ; endif; ?>
+			</div> <!-- /.row -->
+		</section>
 	</div> <!-- /.container -->	
 </section> <!-- /.pageInicio__benefits -->
 
@@ -71,7 +81,7 @@
 <section class="pageInicio__welcome">
 	<div class="container">
 		<!-- Titulo de Sección --> <h2 class="titleSectionCommon text-uppercase text-xs-center">
-		<span><?php _e('bienvenidos' , LANG ); ?></span></h2>
+		<span><?php _e( 'bienvenidos' , LANG ); ?></span></h2>
 
 		<!-- Contenedor o Información -->
 		<section class="pageInicio__welcome__content">
@@ -93,7 +103,8 @@
 
 					<!-- Contenido  -->
 					<div class="text-justify">
-						<?php if( isset($options['widget_nosotros']) && !empty($options['widget_nosotros']) ) : echo apply_filters('the_content' , $options['widget_nosotros'] );
+						<?php if( isset($options['widget_nosotros']) && !empty($options['widget_nosotros']) ) : 
+							echo apply_filters('the_content' , __($options['widget_nosotros'] , LANG ) );
 							else : echo __( 'Actualizando Contenido ' , LANG );
 							endif; 
 						?>

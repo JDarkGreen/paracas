@@ -136,7 +136,7 @@ figure
 	display        : block 
 	font-size      : 14px 
 	margin         : 0 auto 
-	max-width      : 94px
+	max-width      : 115px
 	padding        : 8px 12px 
 	+border-radius( 5px )
 	//hover y focus
@@ -175,7 +175,7 @@ figure
 .social-links
 	display        : inline-block
 	list-style-type: none 
-	margin         : 0 auto
+	margin         : 0
 	padding        : 0 
 	li 
 		display: inline-block
@@ -211,6 +211,45 @@ figure
 		background: $theme_red 
 
 /***************************************************************************************/
+/**--  SIDEBAR O WIDGETS -------------------------------------------------------------**/
+/***************************************************************************************/
+
+//SIDEBAR HEADER WIDGET LENGUAJE
+.sidebar-widget-header
+	ul.language-chooser 
+		+transition( all 500ms cubic-bezier(.5,.5,.5, 2 ) )
+		background     : url("../../images/img_background/idioma_paracas_sunset_lima_peru.png") no-repeat
+		list-style-type: none
+		margin         : 0 25px
+		max-height     : 28px 
+		overflow       : hidden 
+		padding        : 3px 0 3px 30px 
+		position       : absolute 
+		top            : 14px 
+		li 
+			display: none
+			a 
+				+transition( all 500ms cubic-bezier(.5,.5,.5, 1.5 ) )
+				color          : $theme_gray
+				display        : block 
+				padding        : 0 5px 
+				text-decoration: none
+			//Hover and active
+			&:hover 
+				a 
+					background: black
+					color     : white 
+			&.active 
+				display: block  
+		//Hover ul 
+		&:hover 
+			max-height: 100px
+			li 	
+				display: block
+
+//
+
+/***************************************************************************************/
 /**--  HEADER   ----------------------------------------------------------------------**/
 /***************************************************************************************/
 
@@ -234,7 +273,6 @@ figure
 		margin   : 0 15px 
 		max-width: 182px 
 
-
 //NAVEGACIÓN PRINCIPAL
 .mainNavigation
 	padding: 20px 0
@@ -257,7 +295,6 @@ figure
 				font-size      : 24px 
 				text-decoration: none 
 				text-transform : uppercase
-
 
 /***************************************************************************************/
 /**--  SLIDEBAR CONTENEDOR -----------------------------------------------------------**/
@@ -331,6 +368,39 @@ figure
 //++ SECCIÓN BENEFICIOS
 .pageInicio__benefits
 	padding: 30px 0
+
+//Contenedor De Item Befenicios
+.pageInicio__benefits__content
+	margin: 20px auto 0
+//+++ Item Beneficios - Article
+.articleBenefits
+	align-items: center 
+	display    : flex 
+	margin     : 0 auto 24px
+	//Imagen
+	figure 
+		+border-radius( 50% )
+		background: $theme_red
+		display   : inline-block
+		height    : 46px 
+		margin    : 0 18px 0 0
+		overflow  : hidden
+		padding   : 7px 
+		width     : 46px 
+	//Titulo
+	h3
+		+transition( all 500ms cubic-bezier(.5,.5,.5,1.5) )
+		color      : $theme_gray_title
+		font-family: "Raleway" , sans-serif
+		font-size  : 18px 
+		margin     : 0
+	//Hover Artículos
+	&:hover 
+		figure 
+			img 
+				animation: expand 2000ms cubic-bezier(.5,.5,.5,1.5) infinite
+		h3
+			color: $theme_red
 
 //++ SECCIÓN BIENVENIDOS
 .pageInicio__welcome
@@ -513,16 +583,37 @@ figure
 		margin       : 0 36px 
 		max-height   : 100%
 		padding      : 0
+
+		//++Logo 
+		.logo    
+			+border-radius( 0 0 10px 10px )
+			+box-shadow( 1px 1px 9px black )
+			background: white
+			left      : 0
+			margin    : 0
+			max-width : 100%
+			padding   : 20px 10px
+			position  : absolute
+			top       : 0
+
 	//++Barra de Información
 	.mainHeader__info
 		background : url("../../images/img_background/textura_arena_paracas_sunset_lima_peru.jpg") repeat 
 		font-family: "Raleway" , sans-serif
+		padding    : 14px 0 14px 5%
 		//Títulos
 		h2 , h3 , p 
 			color      : $theme_gray_title
 			font-size  : 20px 
 			font-weight: 600 
-			margin     : 0 3px
+			margin     : 0 5px
+	//++Contenido Extra
+	.mainHeader__info__content 
+		margin     : 0 100px 
+	//++Widget de Tiempo
+	.mainHeader__widget-time
+		position: absolute
+		right   : 0 
 
 	//MAIN NAVIGATION
 	.mainNavigation 

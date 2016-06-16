@@ -281,7 +281,7 @@ function theme_customize_register($wp_customize) {
 	));
 	
 	$wp_customize->add_control('theme_custom_settings[widget_nosotros]', array(
-		'label'    => __('Escribe contenido que ira en sección nosotros - PORTADA', LANG),
+		'label'    => __('Texto en Sección Bienvenidos en el Home [ Nota SI ESTA ACTIVADO EL PLUGIN QTRANSLATE ] agregar [:es] antes de texto en español y para traducir este texto añade [:etiqueta_idioma] antes del texto por ejemplo [:en] para Inglés: ', LANG),
 		'section'  => 'theme_widget_nosotros',
 		'settings' => 'theme_custom_settings[widget_nosotros]',
 		'type'     => 'textarea'
