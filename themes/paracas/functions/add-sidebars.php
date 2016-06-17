@@ -30,6 +30,19 @@ if (function_exists('register_sidebar') ) {
 			'after_title'   => '</h4>'
 		)
 	);	
+
+	//+SIDEBAR BARRA LATERAL DERECHA 
+	register_sidebar(
+		array(
+			'name'          => __('Barra Lateral Publicidad y Otros - Sidebar', LANG ),
+			'id'            => 'sidebar-publicidad-hotel',
+			'description'   => __('Barra Lateral Publicidad: Contiene anuncios y otros', LANG ),
+			'before_widget' => '<div class="sidebar-widget-publicity">',
+			'after_widget'  => '</div> <!-- end sidebar-widget-publicity -->',
+			'before_title'  => '<h4>',
+			'after_title'   => '</h4>'
+		)
+	);	
 }
 
 

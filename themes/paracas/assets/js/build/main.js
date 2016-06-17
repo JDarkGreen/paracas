@@ -129,6 +129,14 @@ var j = jQuery.noConflict();
 			j("#"+slider).trigger('next.owl.carousel' , [900] );
 		});
 
+		/*|°°------------- Indicadores  del carousel ---------------°°|*/
+		j(".js-carousel-indicator").on("click",function(e){
+			e.preventDefault();
+			var slider  = j(this).attr('data-slider');
+			var slideto = j(this).attr('data-to');
+			j("#"+slider).trigger( 'to.owl.carousel' , [ slideto , 900 ] );
+		});
+
 		/*|----------------------------------------------------------------------|*/
 		/*|-----  ISOTOPE DE IMAGENES  -----|*/
 		/*|----------------------------------------------------------------------|*/

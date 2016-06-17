@@ -32,10 +32,11 @@ include_once("functions/menu-register.php");
 /***********************************************************************************************/
 /* Registrar Menu Idiomas nota: solo si esta instalado el plugin q translate de WP  */
 /***********************************************************************************************/
+include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-if ( function_exists('qtrans_getLanguage') ){
+if ( is_plugin_active('qtranslate-x/qtranslate.php') ){
 	include_once("functions/add-qtranslate.php");
-}
+} else { echo none; }
 
 /***********************************************************************************************/
 /* Agregando nuevos SIDEBARS y secciones para widgets */
@@ -69,6 +70,7 @@ include_once("functions/custom-comments.php");
 
 //Widget Muestra imagen o icono y texto
 include_once("functions/widgets/widget-ad-icon-text.php");
+include_once("functions/widgets/widget-ad-image.php");
 
 
 /***********************************************************************************************/

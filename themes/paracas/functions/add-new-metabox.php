@@ -149,7 +149,7 @@ function add_banner_img_save_postdata($post_id){
 add_action( 'add_meta_boxes', 'attached_images_meta' );
 
 function attached_images_meta() {
-  $screens = array( 'post', 'page' , 'servicio' , 'proyecto' , 'works' ); //add more in here as you see fit
+  $screens = array( 'post', 'page' , 'servicio' , 'proyecto' , 'habitacion' ); //add more in here as you see fit
 
   foreach ($screens as $screen) {
     add_meta_box(

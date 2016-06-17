@@ -139,11 +139,15 @@
 		</nav> <!-- /.mainNavigation -->
 
 		<!-- Widget de tiempo posición absoluta -->
-		<section class="mainHeader__widget-time">
-			<!-- www.TuTiempo.net - Ancho:452px - Alto:89px -->
-			<div id="TT_vhjyJCKCphCBdehAKAuk4kBkHWn1LAE2btEYksioq1z"><a href="http://www.tutiempo.net">Tu tiempo</a></div>
-			<script type="text/javascript" src="http://www.tutiempo.net/widget/eltiempo_vhjyJCKCphCBdehAKAuk4kBkHWn1LAE2btEYksioq1z"></script>		
-		</section> <!-- /.mainHeader__widget-time -->
+		<?php if( is_page('inicio') || is_page('home') ) : ?>
+			<section class="mainHeader__widget-time relative">
+				<!-- Ciudad -->
+				<span class="city text-uppercase">Paracas</span>
+				<!-- www.TuTiempo.net - Ancho:452px - Alto:89px -->
+				<div id="TT_RxjALxthYIA9dFsA7fzkEEEkk6u1TAflLYEd1cCIa1D"><a href="http://www.tutiempo.net">El tiempo por Tutiempo.net</a></div>
+				<script type="text/javascript" src="http://www.tutiempo.net/widget/eltiempo_RxjALxthYIA9dFsA7fzkEEEkk6u1TAflLYEd1cCIa1D"></script>		
+			</section> <!-- /.mainHeader__widget-time -->
+		<?php endif; ?>
 	
 	</div> <!-- /.mainHeader__container hidden-xs-down -->
 

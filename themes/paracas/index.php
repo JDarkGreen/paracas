@@ -64,16 +64,9 @@
 		<!-- Titulo de Sección --> <h2 class="titleSectionCommon text-uppercase text-xs-center">
 		<span><?php _e('beneficios del hotel' , LANG ); ?></span></h2>
 
-		<div class="clearfix"></div>
+		<!-- Incluir Sección Beneficios de Hotel -->
+		<?php include(locate_template("partials/section-hotel-benefits.php") ); ?>
 
-		<!-- BENEFICIOS DE HOTEL -->
-		<section class="pageInicio__benefits__content">
-			<div class="row">
-				<?php if ( is_active_sidebar( 'sidebar-benefits-hotel' ) ) : ?>
-					<?php dynamic_sidebar( 'sidebar-benefits-hotel' ); ?>
-				<?php else: __("Actualizando contenido" , LANG ) ; endif; ?>
-			</div> <!-- /.row -->
-		</section>
 	</div> <!-- /.container -->	
 </section> <!-- /.pageInicio__benefits -->
 
