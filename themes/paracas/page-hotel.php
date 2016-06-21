@@ -67,7 +67,7 @@
 				* data-items , data-items-responsive , data-margins , data-dots
 				*/
 			?>
-			<div id="carousel-tour" class="section__rooms_gallery js-carousel-gallery" data-items="1" data-items-responsive="1" data-margins="5" data-dots="true" >
+			<div id="carousel-rooms" class="section__rooms_gallery js-carousel-gallery" data-items="1" data-items-responsive="1" data-margins="5" data-dots="true" >
 				<!-- Obtener todas las habitaciones -->
 				<?php  
 					$args = array(
@@ -95,8 +95,12 @@
 								</div>
 								<!-- Botones ver más y reservar -->
 								<div class="item-room__buttons">
-									<a href="" class="btnCommon__show-more btnCommon__show-more--white text-uppercase"><?php _e('reservar ahora' , LANG ); ?></a>
-									<a href="" class="btnCommon__show-more btnCommon__show-more--white text-uppercase"><?php _e('ver más' , LANG ); ?></a>
+									
+									<!-- Conseguir pagina contacto -->
+									<?php $page_contact = get_page_by_path("contacto"); ?>
+									<a href="<?= get_permalink( $page_contact->ID ); ?>" class="btnCommon__show-more btnCommon__show-more--white text-uppercase"><?php _e('reservar ahora' , LANG ); ?></a>
+
+									<a href="<?= get_permalink( $room->ID ); ?>" class="btnCommon__show-more btnCommon__show-more--white text-uppercase"><?php _e('ver más' , LANG ); ?></a>
 								</div> <!-- /.item-room__buttons -->	
  							</div> <!-- /.col-xs-12 col-md-7 -->
 							<div class="col-xs-12 col-md-6">
@@ -115,6 +119,15 @@
 			</div> <!-- /.section__rooms_gallery -->
 
 			<!-- Flechas  -->
+			<!-- Izquierda -->
+			<a href="#" id="" class="js-carousel-prev arrow__common-slider arrow__common-slider--prev" data-slider="carousel-rooms">
+				<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			</a>	
+			<!-- Derecha -->
+			<a href="#" id="" class="js-carousel-next arrow__common-slider arrow__common-slider--next" data-slider="carousel-rooms">
+				<i class="fa fa-chevron-right" aria-hidden="true"></i>
+			</a>
+
 		</div> <!-- /.relative -->	
 
 	</div> <!-- /.container -->

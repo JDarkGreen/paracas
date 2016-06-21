@@ -59,9 +59,6 @@ figure
 	50%
 		+scale( 1.0 )
 
-//EXPAND BACKGROUND
-
-
 //CONTRACT
 +keyframes( contract )
 	0%
@@ -69,23 +66,32 @@ figure
 	100%
 		+scale( 1 )
 
-//LEFT TO RIGHT
-+keyframes( left-to-right )
-	0%
-		+transform( translateZ( 300px ) translateX( -10% ) )	
-	100% 
-		+transform( translateZ( 300px ) translateX( 0% ) )
+//FLIPIN 
++keyframes( flipInY )
+	0%	
+		+rotateY( -90deg )
+		+opacity( 0 )
+	100%
+		+rotateY( 0deg )
+		+opacity( 1 )
 
+//OPACITY 
++keyframes( opacityInOut )
+	0%
+		+opacity( 0 )
+	100%
+		+opacity( 1 )
 
 /***************************************************************************************/
 /**-------------------------- ANIMACIONES CON CLASES ----------------------------------**/
 /***************************************************************************************/
 
-.box-expand
-	animation: expand 20s ease 
-.box-left-to-right
-	animation: left-to-right 10s ease
-
+//clase contract
+.contract 
+	+animation( contract 1200ms cubic-bezier( .5 , .5 , .5 , 1.5 ) ) 
+//clase contract
+.flipInY 
+	+animation( flipInY 4s cubic-bezier( 0 , 1 , 1 , 1 ) 1200ms ) 
 
 /***************************************************************************************/
 /**-- SECCIONES - PAGINAS EN COMUN  --------------------------------------------------**/
@@ -107,12 +113,22 @@ figure
 
 //Flechas de Slider en común
 .arrow__common-slider
-	font-size      : 34px
-	margin         : -22px auto 0
+	margin         : 0 auto
 	position       : absolute
 	text-decoration: none
 	top            : 50%
 	z-index        : 999
+	i 
+		+text-shadow( 1px 1px 4px white )
+		color      : $theme_gray 
+		font-size  : 34px
+		font-weight: 500
+		position: relative 
+	//hover 
+	&:hover 
+		i 
+			+animation( pulse 700ms cubic-bezier(.5,.5,.5,1.5) infinite )	
+
 //Variaciones
 .arrow__common-slider--prev
 	left: -40px
@@ -145,13 +161,16 @@ figure
 //+BOTONES
 //++ Botón Ver Más
 .btnCommon__show-more
-	color          : white 
-	display        : block 
-	font-size      : 14px 
-	margin         : 0 auto 
-	max-width      : 115px
-	padding        : 8px 12px 
 	+border-radius( 5px )
+	+box-shadow( inset 0 0 0 0 transparent )
+	+transition( color 1000ms ease-in , box-shadow 1000ms cubic-bezier(.5 , .5 , .5 ,1.5 ) .2s )
+	color    : white 
+	display  : block 
+	font-size: 14px 
+	margin   : 0 auto 
+	max-width: 115px
+	overflow : hidden
+	padding  : 8px 12px 
 	//hover y focus
 	&:hover , &:focus
 		color          : white 
@@ -160,9 +179,17 @@ figure
 //+++ Variacion a turquesa
 .btnCommon__show-more--turquesa
 	background: $theme_turquesa	
+	//hover
+	&:hover 
+		+box-shadow( inset 300px 0 0 0 white )
+		color     : $theme_turquesa
 //+++ Variacion a rojo
 .btnCommon__show-more--rojo
 	background: $theme_red
+	//hover
+	&:hover 
+		+box-shadow( inset 300px 0 0 0 white )
+		color     :  $theme_red
 //+++ Variacion a blanco
 .btnCommon__show-more--white 
 	background: white 
@@ -462,6 +489,11 @@ figure
 .pageInicio__rooms
 	background: $theme_crema
 	padding   : 15px 0 26px 
+
+	//Sobreescribir flechas de Artículos
+	.arrow__common-slider
+		margin: -54px auto 0
+
 	//Articulos
 	.item-room
 		font-family: "Roboto" , sans-serif
@@ -549,7 +581,6 @@ figure
 			&:hover 
 				img 
 					+scale( 1.2 )
-
 
 	//Conteneido de Articulo
 	.item-tour__content
@@ -873,7 +904,7 @@ input:-ms-input-placeholder , textarea::-webkit-input-placeholder
 
 //SECCIÓN
 .mainFooter
-	background           : url("../../images/img_background/fondo_footer_paracas_sunset_lima_peru.png") no-repeat
+	background           : $theme_crema url("../../images/img_background/fondo_footer_paracas_sunset_lima_peru.png") no-repeat
 	//background-attachment: fixed
 	background-size      : cover
 	padding              : 80px 0 50px
@@ -985,10 +1016,22 @@ input:-ms-input-placeholder , textarea::-webkit-input-placeholder
 
 	// =========== PAGINA INICIO  ===============
 	//++ Carousel Inicio
-	.pageInicio__slider 
+	.pageInicio__slider
+		//wrapper o contenedor de slider 
 		.carousel-inner 
+			.next, .prev, .active.left, .active.right //estilos fade 
+				left     : 0
+				+transform( translate3d(0,0,0) )
+			// active
+			.active , .next.left , .prev.right //estilos fade
+				opacity: 1 !important 
+			//active 
+			.active.left , .active.right //estilos fade
+				+opacity( 0 )
 			.carousel-item
 				height: auto
+				+transition-property( opacity ) //estilos fade
+				+opacity( 0 )
 				//Caption o Información
 				.carousel-caption
 					bottom : 20%
@@ -998,6 +1041,37 @@ input:-ms-input-placeholder , textarea::-webkit-input-placeholder
 					h3 , p 
 						display: inline-block
 						padding: 8px 23px
+		// Indicadores 
+		.carousel-indicators
+			display: none
+
+	//++Flechas de Carousel
+	.arrowSliderHome
+		display        : inline-block
+		position       : absolute 
+		text-decoration: none 
+		top            : 50% 
+		z-index        : 9999
+		//icon 
+		i
+			color    : white
+			font-size: 40px 
+			position : relative
+			+text-shadow( 1px 1px 4px black )
+		//HOVER ARROW
+		&:hover 
+			i 
+				+animation( pulse 700ms cubic-bezier(.5,.5,.5,1.5) infinite )
+
+	//++ Variaciones de Flechas
+	.arrowSliderHome--prev
+		left: 5%
+	.arrowSliderHome--next
+		right: 5%
+
+
+
+
 
 	// =========== PAGINA NOSOTROS ===============
 	.pageCommon__banner 

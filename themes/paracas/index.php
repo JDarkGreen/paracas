@@ -51,8 +51,17 @@
 					</article> <!-- /.item-room -->
 				<?php endforeach; ?>
 			</div> <!-- /.section__rooms_gallery -->
-			<!-- Flechas  -->
 
+			<!-- Flechas  -->
+			<!-- Izquierda -->
+			<a href="#" id="" class="js-carousel-prev arrow__common-slider arrow__common-slider--prev" data-slider="carousel-rooms">
+				<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			</a>	
+			<!-- Derecha -->
+			<a href="#" id="" class="js-carousel-next arrow__common-slider arrow__common-slider--next" data-slider="carousel-rooms">
+				<i class="fa fa-chevron-right" aria-hidden="true"></i>
+			</a> 
+			
 		</div> <!-- /.relative -->
 
 	</div> <!-- /.container -->
@@ -148,11 +157,24 @@
 					foreach( $tours as $tour ) : 
 				?> <!-- Artículo -->
 					<article class="item-tour text-xs-center text-uppercase relative">
-						<?php if( has_post_thumbnail( $tour->ID) ) : ?>
-							<figure>
-								<?= get_the_post_thumbnail( $tour->ID , 'full', array('class'=>'img-fluid imgNotBlur') ); ?>
-							</figure>
-						<?php endif; ?>
+						<!-- Imagen -->
+						<figure>
+							<?php if( has_post_thumbnail( $tour->ID) ) : ?>
+							<?= get_the_post_thumbnail( $tour->ID , 'full', array('class'=>'img-fluid imgNotBlur') ); ?>
+							<?php else:  
+								/* Obtenemos imagenes de la galería y solo escogemos la primera*/
+								$input_ids_img  = get_post_meta( $tour->ID , 'imageurls_'.$tour->ID , true);
+								//convertir en arreglo
+								$input_ids_img  = explode(',' , $input_ids_img );
+								//eliminar los item vacios o nulos
+								$array_without_empty = array_diff( $input_ids_img , array('','-1') );
+								//seleccionar primer id
+								$item = get_post( $array_without_empty[1] );  
+							?>
+								<!-- Imagen Obtenida -->
+								<img src="<?= $item->guid; ?>" alt="paracas-reserva-hotel" class="img-fluid imgNotBlur" />
+							<?php endif; ?>
+						</figure>
 
 						<!-- Contenedor Texto Posicion Absoluta -->
 						<div class="item-tour__content">
@@ -164,7 +186,16 @@
 					</article> <!-- /.item-tour -->
 				<?php endforeach; ?>
 			</div> <!-- /.section__rooms_gallery -->
+
 			<!-- Flechas  -->
+			<!-- Izquierda -->
+			<a href="#" id="" class="js-carousel-prev arrow__common-slider arrow__common-slider--prev" data-slider="carousel-tour">
+				<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			</a>	
+			<!-- Derecha -->
+			<a href="#" id="" class="js-carousel-next arrow__common-slider arrow__common-slider--next" data-slider="carousel-tour">
+				<i class="fa fa-chevron-right" aria-hidden="true"></i>
+			</a>
 
 		</div> <!-- /.relative -->		
 	</div> <!-- /.container -->

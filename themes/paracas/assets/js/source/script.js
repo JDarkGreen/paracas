@@ -45,23 +45,31 @@ var j = jQuery.noConflict();
 		/*|----------------------------------------------------------------------|*/
 		/*|-----  CAROUSEL HOME LIBRERIA  -----|*/
 		/*|----------------------------------------------------------------------|*/
-		/*var carousel_home = j("#carousel-home").carousel({ interval: 5000 , pause : "" });
+		var carousel_home = j("#carousel-home").carousel({ interval: 5000 , pause : "" });
 
-		//Eventos - al finalizar el carousel
-		var i = 1;
-		carousel_home.on('slid.bs.carousel', function ( e ) {
+		//Flechas de carousel Home
+		j(".js-btn-carousel-home").on("click", function(e){ e.preventDefault(); });
+		//Flecha Izquierda
+		j("#arrowSliderHome--prev").on("click",function(){
+			carousel_home.carousel('prev');
+		});
+		//Flecha Derecha
+		j("#arrowSliderHome--next").on("click",function(){
+			carousel_home.carousel('next');
+		});
 
-			if( i > 2 ){ i = 1 };
-			
+		//Eventos - al comenzar carousel
+		carousel_home.on('slide.bs.carousel', function ( e ) {
+
 			var current_item = j(this).find('.active');
-  			//imagen actual
-  			var image_carousel = current_item.find('img');
-  			//animacion de la imagen
-  			if( i == 1 ){ image_carousel.addClass('box-expand'); }
-  			else{ image_carousel.addClass('box-left-to-right'); }
+			// texto titulo
+			var title = current_item.find('h3');
+			title.addClass('contract'); 			
+			// texto parrafo
+			var paragraph = current_item.find('p');
+			paragraph.addClass('flipInY').css('opacity',0);
 
-  			i++;
-		}); */
+		});
 
 		/*|----------------------------------------------------------------------|*/
 		/*|-----  EVENTOS FLECHAS CAROUSEL COMUNES  -----|*/

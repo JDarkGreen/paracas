@@ -46,7 +46,7 @@
 							*/
 						?>
 						<div id="carousel-tour" class="section__single_gallery js-carousel-gallery" data-items="1" data-items-responsive="1" data-margins="5" data-dots="false" >
-							<!-- Obtener todas las habitaciones -->
+							<!-- Obtener todas los tours -->
 							<?php  
 								$input_ids_img  = get_post_meta( $post->ID , 'imageurls_'.$post->ID , true);
 								//convertir en arreglo

@@ -48,7 +48,7 @@
 		    <div class="carousel-item <?= $i == 0 ? 'active' : '' ?>" style='background-image: url("<?= $feat_image; ?>")'>
 				
 				<!-- Imagen -->
-				<img src="<?= $feat_image; ?>" alt="eventos-gala-imagen-catering-<?= $i ?>" class="img-fluid hidden-xs-down">
+				<img src="<?= $feat_image; ?>" alt="" class="img-fluid hidden-xs-down">
 
 		    	<!-- Caption o Información -->
 					<div class="carousel-caption">
@@ -69,6 +69,16 @@
 	  </div> <!-- /.carousel-inner -->
 
 	</section> <!-- /.carousel-home -->
+
+	
+	<!-- Seccion de Flechas de Carousel -->
+	<a href="#" id="arrowSliderHome--prev" class="js-btn-carousel-home arrowSliderHome arrowSliderHome--prev">
+		<i class="fa fa-chevron-left" aria-hidden="true"></i>
+	</a>	
+
+	<a href="#" id="arrowSliderHome--next" class="js-btn-carousel-home arrowSliderHome arrowSliderHome--next">
+		<i class="fa fa-chevron-right" aria-hidden="true"></i>
+	</a>	
 
 	<!-- Imagen Posterior Lobo -->
 	<div class="pageInicio__slider__image">
