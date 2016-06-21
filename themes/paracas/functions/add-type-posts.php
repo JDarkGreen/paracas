@@ -96,7 +96,7 @@ function create_post_type(){
 		'public'      => true,
 		'hierachical' => false,
 		'supports'    => array('title','editor','excerpt','custom-fields','thumbnail','page-attributes'),
-		'taxonomies'  => array('post-tag','category'),
+		'taxonomies'  => array('post-tag'),
 		'menu_icon'   => 'dashicons-portfolio',
 	);	
 	
@@ -205,7 +205,7 @@ function create_post_type(){
 	register_post_type( 'galery-images' , $args8 );
 	register_post_type( 'galery-videos' , $args9 );
 	register_post_type( 'habitacion' , $args10 );
-	register_post_type( 'tour' , $args11 );
+	register_post_type( 'tours' , $args11 );
 
 	flush_rewrite_rules();
 }

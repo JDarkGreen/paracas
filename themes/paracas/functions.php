@@ -17,7 +17,7 @@ include_once("functions/scripts.php");
 /* Marcar la navegacion del padre activo cuanto se encuentra en un single post type */
 /******************************************************************************************/
 
-require_once("functions/nav-active-parent.php");
+include_once("functions/nav-active-parent.php");
 
 /***********************************************************************************************/
 /* Agregar formatos al tema  */
@@ -36,7 +36,7 @@ include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
 if ( is_plugin_active('qtranslate-x/qtranslate.php') ){
 	include_once("functions/add-qtranslate.php");
-} else { echo none; }
+}
 
 /***********************************************************************************************/
 /* Agregando nuevos SIDEBARS y secciones para widgets */

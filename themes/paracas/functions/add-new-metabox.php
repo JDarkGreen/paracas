@@ -149,7 +149,7 @@ function add_banner_img_save_postdata($post_id){
 add_action( 'add_meta_boxes', 'attached_images_meta' );
 
 function attached_images_meta() {
-  $screens = array( 'post', 'page' , 'servicio' , 'proyecto' , 'habitacion' ); //add more in here as you see fit
+  $screens = array( 'post', 'page' , 'servicio' , 'proyecto' , 'habitacion'  , 'tours'); //add more in here as you see fit
 
   foreach ($screens as $screen) {
     add_meta_box(
@@ -176,9 +176,11 @@ function attached_images_meta_box($post){
 	echo "<section style='display:flex; flex-wrap: wrap;'>";
 
 	//Hacer loop por cada item de arreglo
-	foreach ( $input_ids_img as $item_img ) : 
+	//var_dump($input_ids_img  );
+
+	foreach ( $input_ids_img as $item_img ) :  
 		//Si es diferente de null o tiene elementos
-		if( !empty($item_img) ) : 
+		if( !empty($item_img) && $item_img !== '-1' ) : 
 		//Conseguir todos los datos de este item
 		$item = get_post( $item_img  ); 
 	?>

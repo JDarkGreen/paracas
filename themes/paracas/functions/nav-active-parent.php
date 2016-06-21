@@ -6,19 +6,22 @@ pertenece la pagina actual a un custom post type */
 	function add_current_nav_class($classes, $item) {
 		
 		// Getting the current post details
-		global $post;
-		
+		global $post; 
+
+		//Si existe el post entonces hacer setear la variable id sino la variable
+		//id sera el termino queried object
+
+		$post_id = !is_null( $post ) ? $post->ID : get_queried_object()->term_id;
+
 		// Getting the post type of the current post
-		$current_post_type = get_post_type_object(get_post_type($post->ID));
-
+		$current_post_type = !is_null( $post ) ? get_post_type_object( get_post_type( $post_id ) ) : get_queried_object()->taxonomy;
 		
-		$current_post_type_slug = $current_post_type->rewrite['slug'];
-
+		$current_post_type_slug = !is_null( $post ) ? $current_post_type->rewrite['slug'] : $current_post_type;
 			
 		// Getting the URL of the menu item
 		$menu_slug = strtolower(trim($item->url));
 		
-		#var_dump(get_post_type($post->ID) );
+		#var_dump( $current_post_type );
 		#var_dump($menu_slug );
 
 		// If the menu item URL contains the current post types slug add the current-menu-item class
@@ -27,15 +30,21 @@ pertenece la pagina actual a un custom post type */
 		   $classes[] = 'current-menu-item';
 		
 		}
+		
+		//Si el tipo de post es tour y está en la página de articulos activar este item
+		if( get_post_type( $post_id ) === "tours" && ( strpos($menu_slug, "tour") !== false ) )
+		{
+			$classes[] = 'current-menu-item';
+		}			
 
-		//Si el tipo de post es proyecto y está en la página de articulos activar este item
-		if( get_post_type($post->ID) === "proyecto" && ( strpos($menu_slug, "portafolio") !== false ) )
+		//Si el tipo de post es attachment  y está en la página de galeria activar este item
+		if( ( get_post_type( $post_id ) === "galery-images" || $current_post_type === "image_category" ) && ( strpos($menu_slug, "galeria") !== false ) )
 		{
 			$classes[] = 'current-menu-item';
 		}		
 
 		//Si el tipo de post es post y está en la página de articulos activar este item
-		if( get_post_type($post->ID) === "post" && ( strpos($menu_slug,"blog") !== false ) )
+		if( get_post_type( $post_id ) === "post" && ( strpos($menu_slug,"blog") !== false ) )
 		{
 			$classes[] = 'current-menu-item';
 		}

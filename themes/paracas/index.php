@@ -47,7 +47,7 @@
 							</figure>
 						<?php endif; ?>
 						<!-- titulo --> <h3><?php _e( $room->post_title , LANG ); ?></h3>
-						<!-- Botón ver más --> <a href="" class="btnCommon__show-more btnCommon__show-more--turquesa text-uppercase"><?php _e('ver más' , LANG ); ?></a>
+						<!-- Botón ver más --> <a href="<?= get_permalink( $room->ID ); ?>" class="btnCommon__show-more btnCommon__show-more--turquesa text-uppercase"><?php _e('ver más' , LANG ); ?></a>
 					</article> <!-- /.item-room -->
 				<?php endforeach; ?>
 			</div> <!-- /.section__rooms_gallery -->
@@ -103,7 +103,11 @@
 						?>
 					</div> <!-- /.text-justify -->
 
-					<!-- Botón Ver Más --> <a href="" class="btnCommon__show-more btnCommon__show-more--rojo text-uppercase pull-xs-left"> <?php _e('ver más' , LANG ) ?></a>
+					<?php /*Obtener Página Hotel*/ 
+						$page_hotel = get_page_by_path("hotel");
+					?>
+
+					<!-- Botón Ver Más --> <a href="<?= get_permalink( $page_hotel->ID ); ?>" class="btnCommon__show-more btnCommon__show-more--rojo text-uppercase pull-xs-left"> <?php _e('ver más' , LANG ) ?></a>
 
 					<!-- Limpiar Floats --> <div class="clearfix"></div>
  
@@ -137,7 +141,7 @@
 						'order'          => 'ASC',
 						'orderby'        => 'menu_order',
 						'post_status'    => 'publish',
-						'post_type'      => 'tour',
+						'post_type'      => 'tours',
 						'posts_per_page' => -1,
 					); 
 					$tours = get_posts( $args );
@@ -154,7 +158,7 @@
 						<div class="item-tour__content">
 							<!-- titulo --> <h3><?php _e( $tour->post_title , LANG ); ?></h3>
 							<!-- extracto --> <p> <?php _e( $tour->post_excerpt , LANG ); ?> </p>
-							<!-- Botón ver más --> <a href="" class="btnCommon__show-more btnCommon__show-more--turquesa text-uppercase"><?php _e('ver más' , LANG ); ?></a>
+							<!-- Botón ver más --> <a href="<?= get_permalink( $tour->ID ); ?>" class="btnCommon__show-more btnCommon__show-more--turquesa text-uppercase"><?php _e('ver más' , LANG ); ?></a>
 						</div> <!-- /.item-tour__content -->
 
 					</article> <!-- /.item-tour -->
@@ -204,7 +208,10 @@
 
 		<!-- Botón Ver Más -->
 		<br />
-		<a href="" class="btnCommon__show-more btnCommon__show-more--turquesa text-uppercase">
+		<?php /* Obtener Página galería */ 
+			$page_gallery = get_page_by_path("galeria");
+		?>
+		<a href="<?= get_permalink($page_gallery->ID); ?>" class="btnCommon__show-more btnCommon__show-more--turquesa text-uppercase text-xs-center ">
 			<?php _e('ver más' , LANG ) ?> </a>
 		
 	</div> <!-- /.container -->
@@ -230,7 +237,7 @@
 					$args = array(
 						'order'          => 'DESC',
 						'orderby'        => 'date',
-						'post_status'    => 'blog',
+						'post_status'    => 'publish',
 						'post_type'      => 'post',
 						'posts_per_page' => 3,
 					);
@@ -284,7 +291,7 @@
 							fjs.parentNode.insertBefore(js, fjs);
 						}(document, 'script', 'facebook-jssdk'));</script>
 
-						<div class="fb-page" data-href="<?= $options['red_social_fb']; ?>" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-height="500" data-hide-cover="false" data-show-facepile="true">
+						<div class="fb-page" data-href="<?= $options['red_social_fb']; ?>" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-height="565" data-hide-cover="false" data-show-facepile="true">
 						</div> <!-- /. fb-page-->
 					</section> <!-- /.container__facebook -->
 				<?php else: ?>

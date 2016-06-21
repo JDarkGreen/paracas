@@ -17,15 +17,16 @@
 
 //Color 
 
-$theme_red        : #A0000D
+$theme_red           : #A0000D
 
-$theme_gray_title: #5B585A
-$theme_gray      : #7A7A7A
+$theme_gray_title    : #5B585A
+$theme_gray          : #7A7A7A
 
-$theme_alpha_green: rgba(0, 206, 189,.7)
-$theme_turquesa   : #00C1AD
+$theme_alpha_green   : rgba(0, 206, 189,.7)
+$theme_turquesa      : #00C1AD
+$theme_turquesa_claro: #B8F3EF
 
-$theme_crema      : #F8EDE0
+$theme_crema         : #F8EDE0
 
 
 /***************************************************************************************/
@@ -118,8 +119,6 @@ figure
 .arrow__common-slider--next
 	right: -40px
 
-//+Redes Sociales - ul
-
 //+Banners
 //++Banner de Páginas
 .pageCommon__banner
@@ -171,7 +170,6 @@ figure
 	&:hover , &:focus
 		color: $theme_gray_title	
 
-
 //+TITULOS
 //++ Titulo de Seccion de Pagina
 .titleSectionCommon
@@ -192,7 +190,7 @@ figure
 	font-family  : "Bebas"
 	font-size    : 40px 
 	margin       : 0 auto 25px 
-	padding      : 10px 0 
+	padding      : 10px 0 10px 14px 
 //Varacion a color rojo
 .titleDescriptionSection--red
 	color: $theme_red
@@ -238,6 +236,12 @@ figure
 		a 
 			color: $theme_gray 
 
+//++Variacion de redes sociales a rojo
+.social-links--red
+	li 
+		a 
+			color: $theme_red
+
 //BOTÓN HACIA ARRIBA 
 #arrow-up-page
 	+transition( all 500ms ease )
@@ -253,6 +257,58 @@ figure
 	/* Hover */
 	&:hover 
 		background: $theme_red 
+
+//GALERÍAS DE CAROUSEL
+.section__single_gallery
+	margin: 0 auto 10px 
+
+//Indicadores de Galería
+.gallery_indicators
+	margin: 0 auto 30px 
+	//Indicador
+	.gallery_indicator
+		display        : inline-block
+		margin         : 0 4.5px 
+		max-width      : 131px 
+		text-decoration: none 
+
+//Seccion de Links que redirigen
+.sectionLinks__sidebar
+	border-top : 1px solid gray 
+	font-family: "Roboto" , sans-serif
+	margin     : 0 auto 40px 
+	//Título 
+	h2 	
+		border-bottom: 1px solid gray 
+		color        : black 
+		font-size    : 16px 
+		line-height  : 1em 
+		padding      : 17px 0 17px 24px 
+	//Links que dirigen al link correspondiente
+	a.link-to-item
+		+transition( all 500ms cubic-bezier(.5,.5,.5,1.5) )
+		border-bottom  : 1px solid gray 
+		color          : black 
+		display        : block 
+		font-size      : 16px 
+		line-height    : 1em  
+		padding        : 17px 0 17px 24px 
+		text-decoration: none
+		//activo u hover
+		&:hover , &.active 
+			color: $theme_turquesa
+
+//LINEA SEPARADORA
+#separator-line
+	background: $theme_gray
+	height    : 1px 
+	width     : 100%
+
+//CORRECCION IMAGENES CAROUSE
+.owl-carousel
+	.owl-item 
+		img
+			transform-style : inherit !important
 
 /***************************************************************************************/
 /**--  SIDEBAR O WIDGETS -------------------------------------------------------------**/
@@ -356,6 +412,11 @@ figure
 /**--  WRAPPER GENERAL ---------------------------------------------------------------**/
 /***************************************************************************************/
 
+//Contenedor General 
+.pageWrapper
+	margin: 60px auto 0
+
+
 /***************************************************************************************/
 /**--  PAGINA INICIO  ----------------------------------------------------------------**/
 /***************************************************************************************/
@@ -407,12 +468,14 @@ figure
 		//Imagen
 		figure 
 			border  : 4px solid white
-			margin  : 0 auto 30px 
+			margin  : 0 auto 15px 
 			overflow: hidden
 		//Titulo
 		h3 
-			color : $theme_gray_title
-			margin: 0 auto 22px 
+			color    : $theme_gray_title
+			font-size: 20px 
+			margin   : 0 auto 15px 
+
 
 //++ SECCIÓN BENEFICIOS
 .pageInicio__benefits
@@ -441,7 +504,7 @@ figure
 		+transition( all 500ms cubic-bezier(.5,.5,.5,1.5) )
 		color      : $theme_gray_title
 		font-family: "Raleway" , sans-serif
-		font-size  : 18px 
+		font-size  : 14px 
 		margin     : 0
 	//Hover Artículos
 	&:hover 
@@ -567,12 +630,14 @@ figure
 		bottom     : 0 
 		color      : white 
 		font-family: "Raleway" , sans-serif
+		font-size  : 50px 
 		font-weight: 700 
 		left       : 0 
 		margin     : 0 auto 
 		position   : absolute
 		right      : 0
 		top        : 0 
+		+text-shadow( 1px 2px 4px black )
 
 //Seccion de Habitaciones
 .pageNosotros__rooms
@@ -662,20 +727,6 @@ figure
 		&:hover , &.active
 			+box-shadow( inset 400px 0 0 0 $theme_turquesa )
 
-//Galería de Imágenes
-.section__single-rooms_gallery
-	margin: 0 auto 10px
-
-//Indicadores de Galería
-.gallery_indicators
-	margin: 0 auto 30px 
-	//Indicador
-	.gallery_indicator
-		display        : inline-block
-		margin         : 0 4.5px 
-		max-width      : 131px 
-		text-decoration: none 
-
 
 /***************************************************************************************/
 /**--  PÁGINA NEGOCIOS  --------------------------------------------------------------**/
@@ -693,12 +744,127 @@ figure
 	margin: 70px auto 0
 
 /************************************************************************************/
-/**--  PÁGINA PREGUNTAS -----------------------------------------------------------**/
+/**--  PÁGINA TOURS Y PAQUETES  ---------------------------------------------------**/
 /************************************************************************************/
 
 /***************************************************************************************/
-/**--  PÁGINA CONTACTO ---------------------------------------------------------------**/
+/**--  PÁGINA GALERÍA  ---------------------------------------------------------------**/
 /***************************************************************************************/
+
+//Contenedor de Galerías
+.pageGallery__content
+	//Artículo o item 
+	.item-gallery 
+		margin: 0 auto 16px
+		//Imagen
+		figure 
+			overflow: hidden
+			img 
+				+transition( all 500ms ease-in-out )
+			//Hover 
+			&:hover 
+				img 
+					+scale( 1.2 )
+
+
+/***************************************************************************************/
+/**--  PÁGINA BLOG -------------------------------------------------------------------**/
+/***************************************************************************************/
+
+//Seccion Principal
+.pageBlog
+
+//Artículos Preview 
+.item-preview-post
+	margin: 35px auto
+	//Imagen Destacada
+	figure 
+		margin  : 0 auto 22px 
+		overflow: hidden
+		img 
+			+transition( all 500ms cubic-bezier(.5,.5,.5,1.5) )
+		//hover
+		&:hover
+			img 
+				+scale( 1.2 )
+	//Título preview
+	h2 
+		color      : $theme_red
+		font-size  : 16px 
+		font-weight: 600
+		line-height: 1em 
+		margin     : 0 auto 15px 
+	//Párrafos del preview
+	p 
+		color      : $theme_gray 
+		font-size  : 16px 
+		line-height: 1.4em
+
+
+/***************************************************************************************/
+/**-- PÁGINA CONTACTO ----------------------------------------------------------------**/
+/***************************************************************************************/
+
+//SECCIÓN DE DATOS
+.pageContact__data
+	margin: 0 auto 50px
+	//Lista
+	ul 
+		list-style-type: none
+		li 
+			color : $theme_gray
+			margin: 0 auto 20px 
+			i 
+				font-size : 20px
+				margin    : 0 7px 0 -29px
+				text-align: center
+				width     : 20px
+			p 
+				display: inline-block
+				margin : 0 auto 
+				//texto resaltado
+				&.featured 
+					color: $theme_red
+
+//FORMULARIO DE CONTACTO
+.pageContacto__form
+	//inputs y label
+	input , textarea
+		background : $theme_turquesa_claro
+		border     : none 
+		color      : $theme_turquesa
+		font-size  : 15px 
+		line-height: 1em 
+		outline    : 0 
+		padding    : 12px 10px 
+		width      : 100%
+	textarea
+		height    : 118px
+		max-height: 118px 
+
+//Agrupacion de inputs
+.pageContacto__form__group
+	margin: 0 auto 18px
+
+//PLACEHOLDER
+input::-webkit-input-placeholder , textarea::-webkit-input-placeholder
+	color: $theme_turquesa 
+input:-moz-placeholder , textarea::-webkit-input-placeholder
+	color: $theme_turquesa 
+input::-moz-placeholder , textarea::-webkit-input-placeholder
+	color: $theme_turquesa
+input:-ms-input-placeholder , textarea::-webkit-input-placeholder
+	color: $theme_turquesa
+
+
+
+//SECCIÓN DE MAPA
+.pageContact__map
+	margin: 70px auto 0
+
+#canvas-map
+	height: 445px 
+	width : 100%
 
 
 /***************************************************************************************/
@@ -707,8 +873,8 @@ figure
 
 //SECCIÓN
 .mainFooter
-	background           : $theme_crema url("../../images/img_background/fondo_footer_paracas_sunset_lima_peru.png") no-repeat
-	background-attachment: fixed
+	background           : url("../../images/img_background/fondo_footer_paracas_sunset_lima_peru.png") no-repeat
+	//background-attachment: fixed
 	background-size      : cover
 	padding              : 80px 0 50px
 
@@ -747,7 +913,7 @@ figure
 /************************************************************************************/
 
 
-@media ( min-width: 1024px )
+@media ( min-width: 1025px )
 
 	//CONTENEDOR MOBILE 
 	#sb-site
@@ -845,13 +1011,13 @@ figure
 
 	//WIDGET BENEFICIOS
 	.articleBenefits
-		display: -webkit-box
+		//display: -webkit-box
 
 	//MAIN FOOTER
 	.mainFooter
 		background-position: 0 110%
 		background-size    : 100%
-		padding            : 8% 0 0 
+		padding            : 14% 0 0 
 
 	//Item Footer
 	.mainFooter__item

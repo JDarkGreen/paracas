@@ -174,11 +174,11 @@ var j = jQuery.noConflict();
 		/*|----------------------------------------------------------------------|*/
 
 		j("a.gallery-fancybox").fancybox({
-			'overlayShow'  :	false,
-			'speedIn'      :	600, 
-			'speedOut'     :	200, 
-			'transitionIn' :	'elastic',
-			'transitionOut':	'elastic',
+			'overlayShow': false,
+			'openEffect' : 'elastic',
+			'closeEffect': 'elastic',
+			'openSpeed'  : 300,
+			'closeSpeed' : 300,
 		});
 
 

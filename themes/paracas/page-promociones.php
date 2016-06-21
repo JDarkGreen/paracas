@@ -25,6 +25,7 @@
 					<!-- Obtener todas las promociones disponibles -->
 					<section class="pagePromotions__container">
 						<?php  
+							//Argumentos de los posts
 							$args = array(
 								'order'          => 'DESC',
 								'orderby'        => 'date',
@@ -33,27 +34,45 @@
 								'posts_per_page' => -1,
 							);
 							$promotions = get_posts( $args );
-							if( !empty( $promotions) ) : foreach( $promotions as $promotion ) : 
-						?> <!-- Articulo  -->
-							<article class="articleItemPromotion">
-								<!-- Imagen Destacada -->
-								<figure>
-									<?php 
-										if( has_post_thumbnail( $promotion->ID ) ) :
-										echo get_the_post_thumbnail( $promotion->ID , 'full' , array('class'=>'img-fluid imgNotBlur') );
-										endif;
-									?>
-								</figure>  <!-- /.figure -->
+							if( !empty( $promotions) ) : 
+						?> 
 
-								<!-- Titulo --> <h3 class="text-uppercase"><?php _e( $promotion->post_title , LANG ); ?></h3>
+					<!-- Items de Artículos -->
+					<div class="row">
+						<?php $i = 0; foreach( $promotions as $promotion ) : ?>
 
-								<!-- Extracto --> <div class="text-justify"><?= __( apply_filters('the_content' , wp_trim_words( $promotion->post_content , 30 , '' ) , LANG ) ); ?></div> <!-- /.text-justify -->
+							<article class="item-preview-post col-xs-6">
 
-								<!-- Botón ver más --> <a href="<?= get_permalink( $promotion->ID ); ?>" class="btnCommon__show-more btnCommon__show-more--rojo text-uppercase pull-xs-left"><?php _e('ver más' , LANG ); ?></a>
- 
-							</article> <!-- /.articleItemPromotion -->
+								<!-- Imagen Destacada --> <figure> 
+								<?php if( has_post_thumbnail( $promotion->ID ) ) : 
+									echo get_the_post_thumbnail( $promotion->ID , 'full' , array('class' => 'img-fluid imgNotBlur' ) );
+									endif;
+								?>
+								</figure> <!-- /.fin imagen -->
 
-						<?php endforeach; endif; ?>
+								<!-- Titulo --> <h2 class="text-uppercase"><?php _e( $promotion->post_title , LANG ); ?></h2>
+								<!-- Extracto --> <div class="text-justify"> <?= apply_filters('the_content' , wp_trim_words( $promotion->post_content , 30 , '...' ) ); ?></div>
+
+								<!-- Seccion compartir y botón -->
+								<div class="">
+									<!-- Botón  --> <a href="<?= get_permalink( $promotion->ID ); ?>" class="btnCommon__show-more btnCommon__show-more--rojo text-uppercase pull-right"> <?php _e( 'ver más' , LANG  );  ?> </a>
+								</div> <!-- /. -->
+
+								<!-- Limpiar floats --> <div class="clearfix"></div>
+
+							</article> <!-- /.item-preview-post -->
+
+							<!-- Linea Separadora -->
+							<?php if( $i % 2 != 0 ) : ?>
+								<!-- Limpiar floats --> <div class="clearfix"></div>
+								<div id="separator-line"></div>
+							<?php endif; ?>
+
+						<?php $i++; endforeach; ?>
+					</div> <!-- /.row -->	
+
+					<?php endif; ?>
+
 					</section> <!-- /.pagePromotions__container -->			
 
 				</article> <!-- /. -->
@@ -61,6 +80,16 @@
 
 			<!-- Sidebar  Ocultar en mobile -->
 			<aside class="col-md-4 hidden-xs-down">
+
+				<!-- Sección de Categorias de Imagen  -->
+				<section class="sectionLinks__sidebar">
+					<!-- Extraemos todos las categorias de promocion  -->
+					<?php foreach( $promotions as $promotion ) : ?>
+						<a href="<?= get_permalink( $promotion->ID ); ?>" class="link-to-item"><?php _e( $promotion->post_title , LANG  ); ?></a>
+					<?php endforeach; ?>
+				</section> <!-- /.sectionLinks__sidebar -->
+
+				<!-- Sidebar de Publicidad -->
 				<?php if ( is_active_sidebar( 'sidebar-publicidad-hotel' ) ) : ?>
 					<?php dynamic_sidebar( 'sidebar-publicidad-hotel' ); ?>
 				<?php else: __("Actualizando contenido" , LANG ) ; endif; ?>

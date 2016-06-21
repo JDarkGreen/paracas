@@ -31,7 +31,7 @@
 							* data-items , data-items-responsive , data-margins , data-dots
 							*/
 						?>
-						<div id="carousel-negocios" class="section__single-rooms_gallery js-carousel-gallery" data-items="1" data-items-responsive="1" data-margins="5" data-dots="false" >
+						<div id="carousel-negocios" class="section__single_gallery js-carousel-gallery" data-items="1" data-items-responsive="1" data-margins="5" data-dots="false" >
 							<!-- Obtener todas las habitaciones -->
 							<?php  
 								$input_ids_img  = get_post_meta($post->ID, 'imageurls_'.$post->ID , true);
