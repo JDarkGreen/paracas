@@ -163,7 +163,10 @@
 					</section> <!-- /.container__facebook -->
 				<?php else: ?>
 					<p class="text-xs-center">Opcion no habilitada temporalmente</p>
-				<?php endif; ?>				
+				<?php endif; ?>	
+
+				<!-- Separador -->
+				<p></p>			
 
 			</aside> <!-- /.col-md-4 hidden-xs-down -->
 

@@ -331,11 +331,15 @@ figure
 	height    : 1px 
 	width     : 100%
 
-//CORRECCION IMAGENES CAROUSE
+//CORRECCION IMAGENES CAROUSEL
 .owl-carousel
 	.owl-item 
-		img
-			transform-style : inherit !important
+		backface-visibility: hidden !important 
+		transform          : translateZ(0) scale(1.0, 1.0) !important
+		figure  
+			background: black 
+		img 
+			transform-style: initial !important 
 
 /***************************************************************************************/
 /**--  SIDEBAR O WIDGETS -------------------------------------------------------------**/
