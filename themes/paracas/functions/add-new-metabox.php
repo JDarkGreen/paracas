@@ -171,9 +171,14 @@ function attached_images_meta_box($post){
 	#$input_ids_img  = array_unique( $input_ids_img );
 	//colocar en una sola cadena para el input
 	$string_ids_img = "";
-	$string_ids_img = implode(',', $input_ids_img); 
+	$string_ids_img = implode(',', $input_ids_img);
 
-	echo "<section style='display:flex; flex-wrap: wrap;'>";
+?> 
+	
+	<!-- Vamos a este contenedor para que pueda ser ordenable mediante JQUERY UI SORTABLE -->
+	<section id="sortable-ui-container" style='display:flex; flex-wrap: wrap;'>
+
+<?php
 
 	//Hacer loop por cada item de arreglo
 	//var_dump($input_ids_img  );
@@ -184,16 +189,26 @@ function attached_images_meta_box($post){
 		//Conseguir todos los datos de este item
 		$item = get_post( $item_img  ); 
 	?>
-		<figure style="width: 25%;height: 120px; margin: 0 10px 20px; display: inline-block; vertical-align: top; position: relative;">
-			<a href="#" class="js-delete-image" data-id-post="<?= $post->ID; ?>" data-id-img="<?= $item->ID ?>" style="border-radius: 50%; width: 20px;height: 20px; border: 2px solid red; color: red; position: absolute; top: -10px; right: -8px; text-decoration: none; text-align: center; background: black; font-weight: 700;">X</a>
+		<!-- Nota: colocar data-id-img es referente al id de la imagen -->
+		<figure data-id-post="<?= $post->ID; ?>" data-id-img="<?= $item->ID; ?>" style="width: 202px; height: 120px; margin: 0 10px 20px; display: inline-block; vertical-align: top; position: relative; float:left; ">
+			<!--  Boton borrar Imagen -->
+			<a href="#" class="js-delete-image" data-id-post="<?= $post->ID; ?>" data-id-img="<?= $item->ID ?>" style="border-radius: 50%; width: 20px;height: 20px; border: 2px solid red; color: red; position: absolute; top: -10px; right: -8px; text-decoration: none; text-align: center; background: black; font-weight: 700; z-index:999;">X</a>
+
+			<!--  Boton Actualizar Imagen -->
+			<a href="#" class="js-update-image" data-id-post="<?= $post->ID; ?>" data-id-img="<?= $item->ID ?>" style="border-radius: 50%; width: 20px;height: 20px; border: 2px solid green; color: green; position: absolute; top: -10px; right: 18px; text-decoration: none; text-align: center; background: white; font-weight: 700; z-index:999;">@</a>
 			
 			<!-- Abrir frame del contenedor de imagen -->
-			<a href="#" class="js-update-image" data-id-post="<?= $post->ID; ?>" data-id-img="<?= $item->ID ?>" style="display: block; height: 100%; width: 100%;">
-				<img src="<?= $item->guid; ?>" alt="<?= $item->post_title; ?>" class="" style="width: 100%; height: 100%; margin: 0 auto;" />
-			</a> 
+			<img src="<?= $item->guid; ?>" alt="<?= $item->post_title; ?>" class="" style="width: 100%; height: 100%; margin: 0 auto;" />
+
+			<!-- Titulo que muestra el id de imagen que tiene la imagen -->
+			<h2 style="position: absolute;top: 0px;left: 0px;right: 0px;bottom: 0px;color: white;align-items: center; display: flex; justify-content: center; font-size: 50px; text-shadow: 1px 1px 4px black;"> <?= $item->ID; ?> </h2>
+
 		</figure>
-	<?php endif; endforeach; 
-	echo "</section>";
+	<?php endif; endforeach; ?>
+	
+	</section> <!-- /. final contenedor sortable -->
+
+<?php 
 
 	/*----------------------------------------------------------------------------------------------*/
 	echo "<div style='display:block; margin: 0 0 10px;'></div>";

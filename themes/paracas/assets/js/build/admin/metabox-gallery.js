@@ -8,6 +8,40 @@ var j = jQuery.noConflict();
 /* Funcion del documento */
 (function($){
 
+    /*
+    * Comprobamos si existe el contenedor sortable y si es correcto hacemos draggables 
+    * Sus Elementos Internos
+    */
+    if( j("#sortable-ui-container").length ){
+        j("#sortable-ui-container").sortable({ 
+            containment: "parent", //contenedor padre
+            cursor     : "move",  //tipo de cursor
+            distance   : 2, //distancia en px para cambiar de item 
+            opacity    : 0.5, //opacidad
+        });
+
+        /* Evento al actualizar la posicion de los items */
+        j("#sortable-ui-container").on("sortupdate" , function( event, ui ) {
+            /* Obtenemos actual elemento */
+            var current_item = ui.item;
+            /* Obtenemos los nuevos ids de cada imagen pero ordenados
+            */
+            var sortedIDs = j("#sortable-ui-container").sortable( "toArray" , { attribute: "data-id-img"} );
+            /* 
+            * Conseguimos el id de post a modificar para actualizar el valor del campo oculto 
+            * con el arreglo actualizado - finalmente modificamos este campo con el arreglo
+            */
+            var input_data = j("#imageurls_"+ ui.item.attr('data-id-post') );
+            var sortedIDs_tostring = sortedIDs.join(","); //separados por coma
+            input_data.val( sortedIDs_tostring ); //cambiar los valores 
+
+        });
+
+    }
+
+    /*
+    * Agregar Una Imagen 
+    */
     j('#add_image_btn').on('click',function(e) {
 
         e.preventDefault();
@@ -25,17 +59,32 @@ var j = jQuery.noConflict();
         frame.on('close',function(data) {
 
             var input_data = j("#imageurls_"+post_data);
-            
             var imageArray = input_data.val().split(",");
+            images         = frame.state().get('selection');
 
-            images = frame.state().get('selection');
+            //Encontrar contenedor de galería
+            var container_img = j("#sortable-ui-container");
             
             images.each(function(image) {
-                //imageArray.push(image.attributes.url); // want other attributes? Check the available ones with console.log(image.attributes);
-                imageArray.push(image.attributes.id); // want other attributes? Check the available ones with console.log(image.attributes);
+                //imageArray.push(image.attributes.url);
+                // want other attributes? Check the available ones with console.log(image.attributes);
+                imageArray.push(image.attributes.id); 
+                
+                //Colocar Imagenes Temporales
+                var string_figure = "<figure style='width: 202px; height: 120px; margin: 0 10px 20px; display: inline-block; vertical-align: top; position: relative; float:left;'>";
+
+                string_figure += "<a href='#' style='border-radius: 50%; width: 20px; height: 20px; border: 2px solid red; color: red; position: absolute; top: -10px; right: -8px; text-decoration: none; text-align: center; background: black; font-weight: 700; z-index:999;' class='js-delete-image' data-id-post="+post_data+" data-id-img="+image.attributes.id+">X</a>";
+                
+                string_figure += "<img src="+image.attributes.url+" alt="+image.attributes.url+" style='width: 100%; height: 100%; margin: 0 auto;' />";
+
+                string_figure += "</figure>";
+
+                container_img.append( string_figure );
             });
  
-            j("#imageurls_"+post_data).val(imageArray.join(",")); // Adds all image URL's comma seperated to a text input
+            // Agregar todas los id de imagen separados por coma al valor oculto
+            j("#imageurls_"+post_data).val(imageArray.join(","));
+
         });
         
         frame.open();
@@ -86,10 +135,12 @@ var j = jQuery.noConflict();
             //actualizar
             j("#imageurls_"+data_id_post).val( array_valores ); 
 
-
             //mostrar imagen temporal
-            this_link.html("");
-            this_link.append("<img src="+attachment.url+" alt="+attachment.name+" class='' style='max-width: 100%; width: 100%; height: 100%; margin: 0 auto;' />");
+            this_link.parent('figure').find('img').remove();
+            this_link.parent('figure')
+            .append("<img src="+attachment.url+" alt="+attachment.name+" class='' style='max-width: 100%; width: 100%; height: 100%; margin: 0 auto;' />");
+
+            /*this_link.append("<img src="+attachment.url+" alt="+attachment.name+" class='' style='max-width: 100%; width: 100%; height: 100%; margin: 0 auto;' />");*/
         });
 
 
@@ -99,7 +150,7 @@ var j = jQuery.noConflict();
     });
 
     //Eliminar una imagen
-    j(".js-delete-image").on('click',function(e){
+    j(document).on('click' , ".js-delete-image" , function(e){
         e.preventDefault();
 
         //id de post
