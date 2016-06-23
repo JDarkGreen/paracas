@@ -28,13 +28,20 @@
 
 						<!-- Telefono -->
 						<?php if( isset($options['contact_tel']) && !empty($options['contact_tel']) ) : ?>
-							<li> <!-- Icono --> <i class="fa fa-mobile" aria-hidden="true"></i>
-							<?php 
-								$numeros = $options['contact_tel'];
-								$numeros = explode( "," , $numeros );
-								foreach( $numeros as $numero => $value ) : 
-							?> <p> <?= $value; ?></p> <br/>
-							<?php endforeach; ?>
+							<li>
+								<!-- Icono --> <i class="fa fa-mobile" aria-hidden="true"></i> <?php _e( "Reservas: " , LANG ) ?>
+								<?php 
+									$numeros = $options['contact_tel'];
+									$numeros = explode( "," , $numeros );
+									foreach( $numeros as $numero => $value ) : 
+								?> <p> <?= $value; ?></p> /
+								<?php endforeach; ?>
+
+								<!-- Segundo Teléfono de Recepción -->
+								<?php if( isset($options['contact_tel_2']) && !empty($options['contact_tel_2']) ) : echo "<br/>" . __("Recepción: " . $options['contact_tel_2'] , LANG ); 
+									endif; 
+								?>
+
 							</li>
 						<?php endif; ?>
 
@@ -154,6 +161,8 @@
 <?php 
 	if( !empty($options['contact_mapa']) ) : 
 	$mapa = explode(',', $options['contact_mapa'] ); 
+
+	$zoom_mapa = isset( $options['contact_mapa_zoom'] ) && !empty( $options['contact_mapa_zoom'] ) ? $options['contact_mapa_zoom'] : 16;
 ?>
 	<script type="text/javascript">	
 
@@ -170,7 +179,7 @@
 	      //crear mapa
 	      map = new google.maps.Map(document.getElementById('canvas-map'), {
 	        center: {lat: lat, lng: lng},
-	        zoom  : 16
+	        zoom  : <?= $zoom_mapa; ?>,
 	      });
 
 	      //infowindow

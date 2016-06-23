@@ -62,7 +62,7 @@
 								?>
 									<article class="item-gallery col-xs-4">
 										<!-- Link Abre Imagen Fancybox -->
-										<a href="<?= $url_feat_img; ?>" class="gallery-fancybox" rel="group">
+										<a href="<?= $url_feat_img; ?>" class="gallery-fancybox" rel="group" title="<?php _e( $image->post_title , LANG ); ?>">
 											<!-- Imagen --> <figure>
 												<?= get_the_post_thumbnail( $image->ID , 'full' , array('class'=>'img-fluid imgNotBlur') ); ?>
 											</figure> <!-- /.figure -->
@@ -121,7 +121,9 @@
 					</section> <!-- /.container__facebook -->
 				<?php else: ?>
 					<p class="text-xs-center">Opcion no habilitada temporalmente</p>
-				<?php endif; ?>				
+				<?php endif; ?>	
+
+				<!-- Separador --> <p></p>			
 
 			</aside> <!-- /.col-md-4 hidden-xs-down -->
 

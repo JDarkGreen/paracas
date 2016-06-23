@@ -213,7 +213,7 @@ function theme_customize_register($wp_customize) {
 		'priority' => 39
 	));
 	
-	//Telefono 1 Surco Principal
+	//Telefono 1 
 	$wp_customize->add_setting('theme_custom_settings[contact_tel]', array(
 		'default' => '',
 		'type' => 'option'
@@ -223,6 +223,19 @@ function theme_customize_register($wp_customize) {
 		'label'    => __('Escribe el o los números de teléfono [ NOTA: SEPARADOS POR COMAS ]', LANG),
 		'section'  => 'theme_contact_tel',
 		'settings' => 'theme_custom_settings[contact_tel]',
+		'type'     => 'text'
+	));	
+
+	//Telefono 2 
+	$wp_customize->add_setting('theme_custom_settings[contact_tel_2]', array(
+		'default' => '',
+		'type' => 'option'
+	));
+	
+	$wp_customize->add_control('theme_custom_settings[contact_tel_2]', array(
+		'label'    => __('Escribe el o los números de teléfono [ RECEPCIÓN ]', LANG),
+		'section'  => 'theme_contact_tel',
+		'settings' => 'theme_custom_settings[contact_tel_2]',
 		'type'     => 'text'
 	));	
 
@@ -266,6 +279,19 @@ function theme_customize_register($wp_customize) {
 		'settings' => 'theme_custom_settings[contact_mapa]',
 		'type'     => 'text'
 	));	
+
+	//Customizar Zoom de google maps
+	$wp_customize->add_setting('theme_custom_settings[contact_mapa_zoom]', array(
+		'default' => '',
+		'type' => 'option'
+	));
+	
+	$wp_customize->add_control('theme_custom_settings[contact_mapa_zoom]', array(
+		'label'    => __('Establece el zoom de mapa por defecto 16', LANG),
+		'section'  => 'theme_contact_mapa',
+		'settings' => 'theme_custom_settings[contact_mapa_zoom]',
+		'type'     => 'text'
+	));		
 
 	//Customizar WIDGET NOSOTROS
 	$wp_customize->add_section('theme_widget_nosotros', array(

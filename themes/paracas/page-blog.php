@@ -69,6 +69,12 @@
 
 								<!-- Limpiar floats --> <div class="clearfix"></div>
 
+								<!-- Enviar Permalink -->
+								<?php $the_link_share = get_permalink( $articulo->ID ); ?>
+
+								<!-- Sección Compartir en Redes Sociales -->
+								<?php include( locate_template("partials/section-share-type-post.php") ); ?>
+
 							</article> <!-- /.item-preview-post -->
 
 							<!-- Linea Separadora -->

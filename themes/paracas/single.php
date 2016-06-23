@@ -50,6 +50,12 @@
 						?>
 					</div> <!-- /.text-justify -->
 
+					<!-- Enviar Permalink -->
+					<?php $the_link_share = get_permalink( $post->ID ); ?>
+
+					<!-- Sección Compartir en Redes Sociales -->
+					<?php include( locate_template("partials/section-share-type-post.php") ); ?>
+
 				</article> <!-- /. -->
 
 			</main> <!-- /.col-xs-12 -->

@@ -45,9 +45,11 @@
 
 								<!-- Imagen Destacada --> <figure> 
 								<?php if( has_post_thumbnail( $promotion->ID ) ) : 
-									echo get_the_post_thumbnail( $promotion->ID , 'full' , array('class' => 'img-fluid imgNotBlur' ) );
-									endif;
+									echo get_the_post_thumbnail( $promotion->ID , 'full' , array('class' => 'img-fluid imgNotBlur' ) ); 
+									else :
 								?>
+									<img src="<?= IMAGES ?>/update_image.jpg" alt="paracas-sunset-hotel-peru" class="img-fluid" />
+								<?php endif; ?>
 								</figure> <!-- /.fin imagen -->
 
 								<!-- Titulo --> <h2 class="text-uppercase"><?php _e( $promotion->post_title , LANG ); ?></h2>
@@ -59,6 +61,12 @@
 								</div> <!-- /. -->
 
 								<!-- Limpiar floats --> <div class="clearfix"></div>
+
+								<!-- Enviar Permalink -->
+								<?php $the_link_share = get_permalink( $promotion->ID ); ?>
+
+								<!-- Sección Compartir en Redes Sociales -->
+								<?php include( locate_template("partials/section-share-type-post.php") ); ?>
 
 							</article> <!-- /.item-preview-post -->
 

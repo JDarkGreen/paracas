@@ -30,7 +30,10 @@
 					<!-- Imagen -->
 					<figure>
 						<?php if( has_post_thumbnail( $post->ID ) ) : ?>
-							<?= get_the_post_thumbnail( $post->ID , 'full' , array('class'=>'img-fluid imgNotBlur') ); ?>
+							<?= get_the_post_thumbnail( $post->ID , 'full' , array('class'=>'img-fluid imgNotBlur') );
+							else : 
+						?>
+							<img src="<?= IMAGES ?>/update_image.jpg" alt="paracas-sunset-hotel-peru" class="img-fluid" />
 						<?php endif; ?>
 					</figure> <!-- /. -->
 
@@ -42,6 +45,12 @@
 							endif;
 						?>
 					</div> <!-- /.text-justify -->
+
+					<!-- Enviar Permalink -->
+					<?php $the_link_share = get_permalink( $post->ID ); ?>
+
+					<!-- Sección Compartir en Redes Sociales -->
+					<?php include( locate_template("partials/section-share-type-post.php") ); ?>
 
 				</article> <!-- /. -->
 
