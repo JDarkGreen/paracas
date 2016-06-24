@@ -43,6 +43,19 @@ if (function_exists('register_sidebar') ) {
 			'after_title'   => '</h4>'
 		)
 	);	
+
+	//+SIDEBAR BARRA LATERAL DERECHA 2 ITEM
+	register_sidebar(
+		array(
+			'name'          => __('Barra Lateral Publicidad y Formulario', LANG ),
+			'id'            => 'sidebar-publicidad2-hotel',
+			'description'   => __('Barra Lateral Publicidad: Contiene Formulario y Otros', LANG ),
+			'before_widget' => '<div class="sidebar-widget-publicity">',
+			'after_widget'  => '</div> <!-- end sidebar-widget-publicity -->',
+			'before_title'  => '<h4>',
+			'after_title'   => '</h4>'
+		)
+	);	
 }
 
 

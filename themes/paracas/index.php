@@ -47,7 +47,10 @@
 							</figure>
 						<?php endif; ?>
 						<!-- Titulo --> <h3><?php _e( $room->post_title , LANG ); ?></h3>
-						<!-- Extracto --> <div class="item-room__excerpt text-justify"> <?= apply_filters( 'the_content' , wp_trim_words( $room->post_content , 30 , '' ) ); ?></div>
+						
+						<?php /*
+						<!-- Extracto --> <div class="item-room__excerpt text-justify"> <?= apply_filters( 'the_content' , wp_trim_words( $room->post_content , 30 , '' ) ); ?></div> */ ?>
+						
 						<!-- Botón ver más --> <a href="<?= get_permalink( $room->ID ); ?>" class="btnCommon__show-more btnCommon__show-more--turquesa text-uppercase"><?php _e('ver más' , LANG ); ?></a>
 					</article> <!-- /.item-room -->
 				<?php endforeach; ?>

@@ -119,37 +119,24 @@
 
 			<!-- Sidebar  Ocultar en mobile -->
 			<aside class="col-md-4 hidden-xs-down">
+
+				<!-- Primera publicidad barra lateral  -->
 				<?php if ( is_active_sidebar( 'sidebar-publicidad-hotel' ) ) : ?>
 					<?php dynamic_sidebar( 'sidebar-publicidad-hotel' ); ?>
+				<?php else: __("Actualizando contenido" , LANG ) ; endif; ?>				
+
+				<!-- Segunda publicidad barra lateral  -->
+				<?php if ( is_active_sidebar( 'sidebar-publicidad2-hotel' ) ) : ?>
+					<?php dynamic_sidebar( 'sidebar-publicidad2-hotel' ); ?>
 				<?php else: __("Actualizando contenido" , LANG ) ; endif; ?>
 
 				<!-- Sección Facebook -->
 				<?php
 					if( isset($options['red_social_fb']) && !empty($options['red_social_fb']) ) :
-				?>
-					<section class="container__facebook">
-						
-						<!-- Titulo -->
-						<h2 class="titleWidget text-uppercase"><?php _e( "Facebook", LANG ); ?></h2>			
-			
-						<!-- Contebn -->
-						<div id="fb-root" class=""></div>
-
-						<!-- Script -->
-						<script>(function(d, s, id) {
-							var js, fjs = d.getElementsByTagName(s)[0];
-							if (d.getElementById(id)) return;
-							js = d.createElement(s); js.id = id;
-							js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.5";
-							fjs.parentNode.insertBefore(js, fjs);
-						}(document, 'script', 'facebook-jssdk'));</script>
-
-						<div class="fb-page" data-href="<?= $options['red_social_fb']; ?>" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-height="500" data-hide-cover="false" data-show-facepile="true">
-						</div> <!-- /. fb-page-->
-					</section> <!-- /.container__facebook -->
-				<?php else: ?>
+					include( locate_template("partials/section-facebook.php") );
+					else: ?>
 					<p class="text-xs-center">Opcion no habilitada temporalmente</p>
-				<?php endif; ?>				
+				<?php endif; ?>			
 
 			</aside> <!-- /.col-md-4 hidden-xs-down -->
 

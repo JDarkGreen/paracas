@@ -45,6 +45,11 @@
 									foreach( $numeros as $numero => $value ) : 
 								?> <p> <?= $value; ?></p>
 								<?php endforeach; ?>
+
+								<!-- Segundo Numero de teléfono recepcion -->
+								<?php if( isset($options['contact_tel_2']) && !empty($options['contact_tel_2']) ) : ?>
+									<p> <?= $options['contact_tel_2']; ?> </p>
+								<?php endif; ?>
 								</li>
 							<?php endif; ?>
 
