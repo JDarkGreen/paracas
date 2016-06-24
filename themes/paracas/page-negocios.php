@@ -29,6 +29,8 @@
 						<?php endif; ?>	
 					</figure>
 
+					<!-- Separador --> <p></p>
+
 					<!-- Contenido de Primer Elemento - Texto -->
 					<div class="text-justify">
 						<?php if( !empty( $post->post_content ) ) : 
