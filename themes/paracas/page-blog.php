@@ -130,7 +130,7 @@
 							fjs.parentNode.insertBefore(js, fjs);
 						}(document, 'script', 'facebook-jssdk'));</script>
 
-						<div class="fb-page" data-href="<?= $options['red_social_fb']; ?>" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-height="500" data-hide-cover="false" data-show-facepile="true">
+						<div class="fb-page" data-href="<?= $options['red_social_fb']; ?>" data-tabs="timeline" data-small-header="false" data-width="350" data-adapt-container-width="true" data-height="500" data-hide-cover="false" data-show-facepile="true">
 						</div> <!-- /. fb-page-->
 					</section> <!-- /.container__facebook -->
 				<?php else: ?>

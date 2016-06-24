@@ -45,28 +45,28 @@ var j = jQuery.noConflict();
 		/*|----------------------------------------------------------------------|*/
 		/*|-----  CAROUSEL HOME LIBRERIA  -----|*/
 		/*|----------------------------------------------------------------------|*/
-		var carousel_home = j("#carousel-home").carousel({ interval: 5000 , pause : "" });
+		var carouselHome = j("#carousel-home").carousel({ interval: 5000 , pause : "" });
 
 		//Flechas de carousel Home
 		j(".js-btn-carousel-home").on("click", function(e){ e.preventDefault(); });
 		//Flecha Izquierda
 		j("#arrowSliderHome--prev").on("click",function(){
-			carousel_home.carousel('prev');
+			carouselHome.carousel('prev');
 		});
 		//Flecha Derecha
 		j("#arrowSliderHome--next").on("click",function(){
-			carousel_home.carousel('next');
+			carouselHome.carousel('next');
 		});
 
 		//Eventos - al comenzar carousel
-		carousel_home.on('slide.bs.carousel', function ( e ) {
+		carouselHome.on('slide.bs.carousel', function ( e ) {
 
-			var current_item = j(this).find('.active');
+			var currentItem = j(this).find('.active');
 			// texto titulo
-			var title = current_item.find('h3');
+			var title = currentItem.find('h3');
 			title.addClass('contract'); 			
 			// texto parrafo
-			var paragraph = current_item.find('p');
+			var paragraph = currentItem.find('p');
 			paragraph.addClass('flipInY').css('opacity',0);
 
 		});
@@ -101,21 +101,22 @@ var j = jQuery.noConflict();
 
 				/* Generar el carousel */
 				current.owlCarousel({
-					items          : Items,
+					autoplay       : true,
+					autoplayTimeout: 2500,
+					center         : true,
+					dots           : Boolean( Dot ),
+					fluidSpeed     : 2000,
+					items          : parseInt(Items),
 					lazyLoad       : false,
 					loop           : true,
 					margin         : parseInt( Margins ),
-					nav            : false,
-					autoplay       : true,
-					responsiveClass: true,
 					mouseDrag      : false,
-					autoplayTimeout: 2500,
-					fluidSpeed     : 2000,
+					nav            : false,
+					responsiveClass: true,
 					smartSpeed     : 2000,
-					dots           : Boolean( Dot ),
 					responsive:{
 				      	640:{
-				            items: Itemsresponsive
+				            items: parseInt(Itemsresponsive)
 				        },
 			    	}	
 				});
