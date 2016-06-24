@@ -20,42 +20,14 @@
 			<main class="col-xs-12 col-md-8">
 				<article class="pageNegocios__article">
 
-					<!-- Titulo --> <h2 class="titleDescriptionSection"><?php _e("Ambientes", LANG ); ?></h2>
+					<!-- Titulo --> <h2 class="titleDescriptionSection"><?php _e( $post->post_title , LANG ); ?></h2>
 
-					<!-- Galería de Primer Elemento -->
-					<div class="relative">
-						<?php  
-							/*
-							*  Wrapper o Contenedor
-							*  Attributos disponible 
-							* data-items , data-items-responsive , data-margins , data-dots
-							*/
-						?>
-						<div id="carousel-negocios" class="section__single_gallery js-carousel-gallery" data-items="1" data-items-responsive="1" data-margins="5" data-dots="false" >
-							<!-- Obtener todas las habitaciones -->
-							<?php  
-								$input_ids_img  = get_post_meta($post->ID, 'imageurls_'.$post->ID , true);
-								//convertir en arreglo
-								$input_ids_img  = explode(',', $input_ids_img ); 
-
-								//Hacer loop por cada item de arreglo
-								foreach ( $input_ids_img as $item_img ) : 
-									//Si es diferente de null o tiene elementos
-									if( !empty($item_img) ) : 
-									//Conseguir todos los datos de este item
-									$item = get_post( $item_img  ); 
-							?> <!-- Artículo -->
-								<article class="item-room relative">
-									<!-- Imagen -->
-									<figure><img src="<?= $item->guid; ?>" alt="<?= $item->post_title; ?>" class="img-fluid" /></figure>
-								</article> <!-- /.item-tour -->
-
-							<?php endif; endforeach; ?>
-						</div> <!-- /.section__rooms_gallery -->
-
-						<!-- Flechas  -->
-
-					</div> <!-- /.relative -->	
+					<!-- Imagen Destacada -->
+					<figure>
+						<?php if( has_post_thumbnail( $post->ID ) ) : ?>
+							<?= get_the_post_thumbnail( $post->ID , 'full' , array('class'=>'img-fluid') ); ?>	
+						<?php endif; ?>	
+					</figure>
 
 					<!-- Contenido de Primer Elemento - Texto -->
 					<div class="text-justify">

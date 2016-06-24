@@ -4,11 +4,12 @@
 plugins */
 
 // Load plugins
-var gulp = require('gulp'),
-	plugins = require('gulp-load-plugins')({ camelize: true }),
-	sass    = require('gulp-ruby-sass'), //no olvidar esta variable hay actualización
-	lr      = require('tiny-lr'),
-	server  = lr();
+var gulp   = require('gulp'),
+	plugins    = require('gulp-load-plugins')({ camelize: true }),
+	sass       = require('gulp-ruby-sass'), //no olvidar esta variable hay actualización
+	livereload = require('gulp-livereload'), //no olvidar esta variable hay actualización
+	lr         = require('tiny-lr'),
+	server     = lr();
 
 // Styles
 gulp.task('styles', function() {
@@ -21,7 +22,7 @@ gulp.task('styles', function() {
 	)
 	.pipe(gulp.dest('assets/styles/build'))
 	.pipe(plugins.minifyCss({ keepSpecialComments: 1 }))
-	.pipe(plugins.livereload(server))
+	.pipe( livereload({ start: true }) )
 	.pipe(gulp.dest('./'))
 	.pipe(plugins.notify({ message: 'Tarea de estilos completa' }));
 });
@@ -33,7 +34,7 @@ gulp.task('plugins', function() {
 	.pipe(gulp.dest('assets/js/build'))
 	.pipe(plugins.rename({ suffix: '.min' }))
 	.pipe(plugins.uglify())
-	.pipe(plugins.livereload(server))
+	.pipe( livereload({ start: true }) )
 	.pipe(gulp.dest('assets/js'))
 	.pipe(plugins.notify({ message: 'Tarea Completa de Vendor Scripts' }));
 });
@@ -47,7 +48,7 @@ gulp.task('scripts', function() {
 	.pipe(gulp.dest('assets/js/build'))
 	.pipe(plugins.rename({ suffix: '.min' }))
 	.pipe(plugins.uglify())
-	.pipe(plugins.livereload(server))
+	.pipe( livereload({ start: true }) )
 	.pipe(gulp.dest('assets/js'))
 	.pipe(plugins.notify({ message: 'Tarea Completa de Scripts' }));
 });
@@ -56,7 +57,7 @@ gulp.task('scripts', function() {
 gulp.task('images', function() {
   return gulp.src('assets/images/**/*')
 	.pipe(plugins.cache(plugins.imagemin({ optimizationLevel: 7, progressive: true, interlaced: true })))
-	.pipe(plugins.livereload(server))
+	.pipe( livereload({ start: true }) )
 	.pipe(gulp.dest('assets/images'))
 	.pipe(plugins.notify({ message: 'Tarea Completa de Imágenes' }));
 });
@@ -64,11 +65,13 @@ gulp.task('images', function() {
 // Watch
 gulp.task('watch', function() {
 
-  // Listen on port 35729
-  server.listen(35729, function (err) {
+  	// Listen on port 35729
+  	server.listen(35729, function (err) {
 	if (err) {
 	  return console.log(err)
 	};
+
+	livereload.listen();
 
 	// Watch .scss files
 	gulp.watch('assets/styles/source/**/*.sass', ['styles']);
