@@ -1,4 +1,6 @@
 <?php
+global $wpdb;
+
 /***********************************************************************************************/
 /* Add a menu option to link to the customizer */
 /***********************************************************************************************/
@@ -6,6 +8,7 @@ add_action('admin_menu', 'display_custom_options_link');
 function display_custom_options_link() {
 	add_theme_page('Paracas Sunset Opciones', 'Paracas Sunset Opciones', 'edit_theme_options', 'customize.php');
 }
+
 
 /***********************************************************************************************/
 /* Add options in the theme customizer page */
@@ -141,15 +144,15 @@ function theme_customize_register($wp_customize) {
 	
 	// Contact Email
 	$wp_customize->add_section('theme_contact_email', array(
-		'title' => __('Seccion Correos', LANG),
+		'title'       => __('Seccion Correos', LANG),
 		'description' => __('Escribe el Correo Contacto Correspondiente', LANG),
-		'priority' => 37
+		'priority'    => 37
 	));
 	
 	//Email Principal
 	$wp_customize->add_setting('theme_custom_settings[contact_email]', array(
 		'default' => '',
-		'type' => 'option'
+		'type'    => 'option'
 	));
 	
 	$wp_customize->add_control('theme_custom_settings[contact_email]', array(

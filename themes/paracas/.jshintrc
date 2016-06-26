@@ -18,6 +18,9 @@
     "globals": {
         "Backbone": true,
         "_": true,
-        "jQuery": true
+        "jQuery": true,
+        "url" : false,
+        "data" : false,
+        "alert" : false
     }
 }

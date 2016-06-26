@@ -1,35 +1,35 @@
-<?php
-	
-	//Obtenemos las valores enviados
-	$from    = $_POST['email'];
-	$message = $_POST['message'];
+<?php //Obtenemos las valores enviados
 	$name    = $_POST['name'];
+	$from    = $_POST['email'];
 	$phone   = $_POST['phone'];
-	$subject = $_POST['subject'];
-
+	$message = $_POST['message'];
 
 	//Email A quien se le rinde cuentas
-	$webmaster_email2 = "jgomez.4net@gmail.com";
+	$webmaster_email1 = "reservas@paracassunset.com";
+	$webmaster_email2 = "jgomez@ingenioart.com";
 
 	include("./class.phpmailer.php");
  	include("./class.smtp.php");
 
 	$mail = new PHPMailer();
-	$mail->IsSMTP(); // send via SMTP
-	$mail->SMTPSecure = 'ssl'; 
+	/*$mail->isSMTP(); // send via SMTP
+	$mail->SMTPDebug = 2;	
 
-	$mail->Host      = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-	$mail->Port      = 465;
-	$mail->SMTPAuth  = true; // turn on SMTP authentication
-	$mail->Username  = "jgomez.4net@gmail.com"; // Enter your SMTP username
-	$mail->Password  = "ARLAC_RINO1EVER"; // SMTP password
+	$mail->SMTPAuth   = true; // turn on SMTP authentication
+	$mail->SMTPSecure = 'ssl';
+	$mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+	$mail->Port       = 465;
 
-	$mail->From     = $from;
-	$mail->FromName = $name;
+	$mail->Username   = 'jgomez.4net@gmail.com'; // Enter your SMTP username
+	$mail->Password   = 'ARLAC_RINO1EVER'; // SMTP password*/
+
+	$mail->setFrom( $from , $name );
+	//$mail->AddAddress( "reservas@paracassunset.com" );
+	$mail->AddAddress( $webmaster_email1 );
 	$mail->AddAddress( $webmaster_email2 );
 
 	$mail->IsHTML(true); // send as HTML
-	$mail->Subject = "Consulta - Mensaje EVENTOS GALA Formulario: " . $subject;
+	$mail->Subject = "Consulta - Mensaje PARACAS SUNSET: ";
 
 	//Customizar el mensaje
 	$mensaje  = "De Sr.(a) " . $name . "<br/>";
