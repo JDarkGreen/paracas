@@ -27,7 +27,7 @@
 					) );
 
 					/* Extraer la primera categoría */
-					$first_cat = $categorias[1];
+					$first_cat = !empty($categorias[0]) ? $categorias[0] : $categorias[1];
 
 					/* Vamos a obtener todos los paquetes de tour y seleccionaremos el primero*/
 					$args = array(
