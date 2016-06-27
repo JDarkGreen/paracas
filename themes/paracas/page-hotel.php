@@ -34,9 +34,16 @@
 </section> <!-- /.pageNosotros__description -->
 
 <!-- Imagen De Bienvenidas -->
+<?php  
+	/* Variable url welcome image */
+	$image_welcome = isset( $options['image_welcome'] ) && !empty( $options['image_welcome'] ) ? $options['image_welcome'] : IMAGES . "/img_background/welcome-paracas.jpg";
+
+	/*Variable text welcome */
+	$text_welcome = isset( $options['widget_welcome'] ) && !empty( $options['widget_welcome'] ) ? $options['widget_welcome'] : __( "Bievenidos", LANG ) ;
+?>
 <figure class="pageNosotros__welcome relative">
-	<img src="<?= IMAGES; ?>/img_background/welcome-paracas.jpg" alt="sunset-paracas-lima-reserva" class="img-fluid" />
-	<!-- Texto de bienvenida --> <h2 class="text-capitalize container-flex align-content"><?php _e( "Bievenidos", LANG ); ?></h2>
+	<img src="<?= $image_welcome; ?>" alt="sunset-paracas-lima-reserva" class="img-fluid" />
+	<!-- Texto de bienvenida --> <h2 class="text-capitalize container-flex align-content"><?= $text_welcome; ?></h2>
 </figure> <!-- /.pageNosotros__welcome -->
 
 <!-- Incluir Banner de Servicios -->

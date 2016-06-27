@@ -315,50 +315,42 @@ function theme_customize_register($wp_customize) {
 		'settings' => 'theme_custom_settings[widget_nosotros]',
 		'type'     => 'textarea'
 	));
+
 	//imagen
 	$wp_customize->add_setting('theme_custom_settings[image_nosotros]',array(
 		'default' => '',
 		'type'    => 'option'
 	));
-
 	$wp_customize->add_control(new WP_Customize_Upload_Control($wp_customize,'widget_nosotros',array(
 		'label'    => __('Imagen Nosotros', LANG),
 		'section'  => 'theme_widget_nosotros',
 		'settings' => 'theme_custom_settings[image_nosotros]',
+	)));		
+
+	/* SECCION BIENVENIDOS */
+	$wp_customize->add_setting('theme_custom_settings[widget_welcome]', array(
+		'default' =>  __('Bievenidos' , LANG ),
+		'type'    => 'option'
+	));
+	
+	$wp_customize->add_control('theme_custom_settings[widget_welcome]', array(
+		'label'    => __('Título Bievenida: ', LANG),
+		'section'  => 'theme_widget_nosotros',
+		'settings' => 'theme_custom_settings[widget_welcome]',
+		'type'     => 'text'
+	));
+
+	//imagen
+	$wp_customize->add_setting('theme_custom_settings[image_welcome]',array(
+		'default' => '',
+		'type'    => 'option'
+	));
+	$wp_customize->add_control(new WP_Customize_Upload_Control($wp_customize,'widget_welcome',array(
+		'label'    => __('Imagen Bievenida 1920x643:', LANG),
+		'section'  => 'theme_widget_nosotros',
+		'settings' => 'theme_custom_settings[image_welcome]',
 	)));	
 
-	//Customizar Informacion Footer
-	$wp_customize->add_section('theme_widget_footer', array(
-		'title' => __('Sección Footer', LANG),
-		'description' => __('Sección Footer', LANG),
-		'priority' => 41
-	));
-	
-	//textarea
-	$wp_customize->add_setting('theme_custom_settings[widget_footer]', array(
-		'default' => '',
-		'type' => 'option'
-	));
-	
-	$wp_customize->add_control('theme_custom_settings[widget_footer]', array(
-		'label'    => __('Escribe contenido en sección FOOTER', LANG),
-		'section'  => 'theme_widget_footer',
-		'settings' => 'theme_custom_settings[widget_footer]',
-		'type'     => 'textarea'
-	));
-
-	/* THEMA SERVICIOS - Customizar Información Servicios */
-	$wp_customize->add_setting('theme_custom_settings[widget_footer_service]', array(
-		'default' => '',
-		'type' => 'option'
-	));
-	
-	$wp_customize->add_control('theme_custom_settings[widget_footer_service]', array(
-		'label'    => __('Escribe Servicios en sección FOOTER', LANG),
-		'section'  => 'theme_widget_footer',
-		'settings' => 'theme_custom_settings[widget_footer_service]',
-		'type'     => 'textarea'
-	));	
 
 	//Customizar Horario de Atención
 	$wp_customize->add_section('theme_attention', array(
