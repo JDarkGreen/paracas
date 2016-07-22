@@ -105,6 +105,13 @@
 				</div> <!-- /.col-xs-12 col-md-3 -->
 			</div> <!-- /.row -->
 		</div> <!-- /.container -->
+		
+		<!-- Seccion Desarrolladora -->
+		<div class="sectionDeveloper text-xs-center">
+			<?= "&copy; ". date("Y") . " Derechos Reservados Paracas Sunset | Diseño"; ?>
+			<a target="_blank" href="http://www.ingenioart.com/"> Ingenioart </a> 
+		</div> <!-- /.sectionDeveloper -->
+
 	</footer><!-- /.mainFooter -->
 
 	</div> <!-- /#sb-slidebar -->

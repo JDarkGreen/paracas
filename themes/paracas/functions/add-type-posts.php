@@ -199,8 +199,8 @@ function create_post_type(){
 
 	/*|>>>>>>>>>>>>>>>>>>>> REGISTRAR  <<<<<<<<<<<<<<<<<<<<|*/
 	register_post_type( 'banner'   , $args  );
-	register_post_type( 'servicio' , $args2 );
-	register_post_type( 'cliente' , $args3 );
+	//register_post_type( 'servicio' , $args2 );
+	//register_post_type( 'cliente' , $args3 );
 	register_post_type( 'promocion' , $args6 );
 	register_post_type( 'galery-images' , $args8 );
 	register_post_type( 'galery-videos' , $args9 );

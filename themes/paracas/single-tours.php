@@ -52,6 +52,12 @@
 								//convertir en arreglo
 								$input_ids_img  = explode(',', $input_ids_img ); 
 
+								//remover todos los numeros negativos
+								$eliminar_array = array("-1");
+
+								//obtener nuevo array filtrado
+								$input_ids_img = array_diff( $input_ids_img , $eliminar_array );
+
 								//Hacer loop por cada item de arreglo
 								foreach ( $input_ids_img as $item_img ) : 
 									//Si es diferente de null o tiene elementos
