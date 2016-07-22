@@ -6,7 +6,7 @@
 <!-- Incluir Banner de Pagina -->
 <?php
 	$current_term = get_queried_object(); //Objeto actual 
-	$page         = get_page_by_path('galeria');  //buscamos el objeto de acuerdo a la página galeria
+	$page         = get_page_by_path('galeria-paracas-ica');  //buscamos el objeto de acuerdo a la página galeria
 	$banner       = $page;  // Seteamos la variable banner de acuerdo al post
 	include( locate_template("partials/banner-common-pages.php") ); 
 ?>

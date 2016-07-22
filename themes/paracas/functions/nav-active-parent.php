@@ -27,12 +27,16 @@ pertenece la pagina actual a un custom post type */
 		// If the menu item URL contains the current post types slug add the current-menu-item class
 		if (strpos($menu_slug, $current_post_type_slug) !== false) {
 		
-		   $classes[] = 'current-menu-item';
+		   #$classes[] = 'current-menu-item';
 		
 		}
-		
+			
+		#echo get_post_type( $post_id ). " " ;
+		#echo $menu_slug. " " ;
+		#echo preg_match( "/tours-paracas-ica/" , $menu_slug ) . " " ;
+
 		//Si el tipo de post es tour y está en la página de articulos activar este item
-		if( get_post_type( $post_id ) === "tours" && ( strpos($menu_slug, "tour") !== false ) )
+		if( get_post_type( $post_id ) === "tours" && preg_match( "/tours-paracas-ica/" , $menu_slug ) === 1 )
 		{
 			$classes[] = 'current-menu-item';
 		}			

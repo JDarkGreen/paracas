@@ -6,7 +6,7 @@
 <!-- Incluir Banner de Pagina -->
 <?php
 	global $post; //Objeto actual - Single Tour - Paquete
-	$page   = get_page_by_path('tour');  //buscamos el objeto de acuerdo a la página tour
+	$page   = get_page_by_title("tour");
 	$banner = $page;  // Seteamos la variable banner de acuerdo al post
 	include( locate_template("partials/banner-common-pages.php") ); 
 ?>
