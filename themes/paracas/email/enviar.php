@@ -6,7 +6,7 @@
 
 	//Email A quien se le rinde cuentas
 	$webmaster_email1 = "reservas@paracassunset.com";
-	$webmaster_email2 = "jgomez@ingenioart.com";
+	#$webmaster_email2 = "jgomez@ingenioart.com";
 
 	include("./class.phpmailer.php");
  	include("./class.smtp.php");
@@ -26,7 +26,7 @@
 	$mail->setFrom( $from , $name );
 	//$mail->AddAddress( "reservas@paracassunset.com" );
 	$mail->AddAddress( $webmaster_email1 );
-	$mail->AddAddress( $webmaster_email2 );
+	#$mail->AddAddress( $webmaster_email2 );
 
 	$mail->IsHTML(true); // send as HTML
 	$mail->Subject = "Consulta - Mensaje PARACAS SUNSET: ";
